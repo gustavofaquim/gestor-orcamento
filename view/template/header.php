@@ -18,36 +18,30 @@
 
       if(isset($_SESSION['logado'])){
         if($_SESSION['logado'] == True){
+          $usuario = $_SESSION['user'];
+          
           // echo "<nav class='navbar nav justify-content-center top-menu'>";
           echo "<nav class='navbar navbar-expand-lg top-menu'>";
           //navbar navbar-expand-lg navbar-light bg-light
           echo"<div class='collapse navbar-collapse'>";
             echo"<ul class='nav justify-content-center'>";
-              echo "<li class='nav-item'>";
+              
+            echo "<li class='nav-item'>";
                 echo "<a class='nav-link' href='/'>Home</a>";
               echo"</li>";
-
-              echo "<li class='nav-item'>";
-                echo "<a class='nav-link' href='/user/'>Usuários</a>";
-              echo"</li>";
-
-              echo "<li class='nav-item'>";
-                echo "<a class='nav-link' href='/posts/".$_SESSION['user']['usuario']."'>Minhas Publicações</a>";
-              echo"</li>";
-
-              echo "<li class='nav-item'>";
-                echo "<a class='nav-link' href='/post/create/'>+</a>";
-              echo"</li>";
-
+              
               echo "<li class='nav-item'>";
                 echo "<a class='nav-link btn-login' href='/deslogar'>Sair</a>";
               echo"</li>";
+
+              echo "<li class='nav-item'>";
+                echo "<a class='nav-link btn-login' href='/alterar-usuario?id=".$usuario->__get('id')."'>Perfil</a>";
+              echo"</li>";
+
             echo"</ul>";
           echo"</div>";
 
-          echo "<a class='nav-link link-fto' href='/user/edit/".$_SESSION['user']['id']."'>";
-            echo"<img src='/imagens/".$_SESSION['user']['img']."'  class='rounded-circle fto-menu'>";
-          echo"</a>";
+         
         echo"</nav>";
         }else{
           echo " <nav class='nav justify-content-center top-menu'>";

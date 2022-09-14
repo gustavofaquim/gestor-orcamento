@@ -26,9 +26,12 @@ session_start();
 
 //$_SESSION['logado'] = True;
 
-$rotaLogin = str_contains($caminho, 'login');
 
-if(!isset($_SESSION['logado']) && $rotaLogin === False){
+$rotaLogin = str_contains($caminho, 'login');
+$rotaCadastro = str_contains($caminho, 'usuario');
+
+if(!isset($_SESSION['logado']) && $rotaLogin === False && $rotaCadastro === False){
+    
     header('Location: /login');
     exit();
 }
