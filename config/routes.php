@@ -1,5 +1,6 @@
 <?php 
 
+use \GestorOrcamento\Controllers\Home;
 use \GestorOrcamento\Controllers\FormularioLogin;
 use \GestorOrcamento\Controllers\RealizaLogin;
 use \GestorOrcamento\Controllers\Deslogar;
@@ -9,6 +10,7 @@ use \GestorOrcamento\Controllers\Usuario\CadastroUsuario;
 
 
 $rotas = [
+    '/' => Home::class,
     '/login' => FormularioLogin::class,
     '/realiza-login' => RealizaLogin::class,
     '/deslogar' => Deslogar::class,

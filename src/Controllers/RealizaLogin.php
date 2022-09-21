@@ -52,7 +52,7 @@ class RealizaLogin implements RequestHandlerInterface{
 
         $_SESSION['logado'] = true;
         $_SESSION['user'] = $usuario;
-        return new Response(302, ['Location' => '/teste']);
+        return new Response(302, ['Location' => '/']);
     }
 
 }
