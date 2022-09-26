@@ -1,6 +1,6 @@
 <?php
 
-namespace GestorOrcamento\Infra;
+namespace GenericMvc\Infra;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;

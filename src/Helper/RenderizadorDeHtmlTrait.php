@@ -1,6 +1,6 @@
 <?php
 
-namespace GestorOrcamento\Helper;
+namespace GenericMvc\Helper;
 
 trait RenderizadorDeHtmlTrait{
     

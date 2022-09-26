@@ -1,6 +1,6 @@
 <?php 
 
-namespace GestorOrcamento\Controllers;
+namespace GenericMvc\Controllers;
 
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;

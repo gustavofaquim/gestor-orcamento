@@ -1,12 +1,12 @@
 <?php 
 
-use \GestorOrcamento\Controllers\Home;
-use \GestorOrcamento\Controllers\FormularioLogin;
-use \GestorOrcamento\Controllers\RealizaLogin;
-use \GestorOrcamento\Controllers\Deslogar;
-use \GestorOrcamento\Controllers\Usuario\FormularioCadastro as FormularioCadastroUsuario;
-use \GestorOrcamento\Controllers\Usuario\FormularioEdicao as FormularioEdicaoUsuario;
-use \GestorOrcamento\Controllers\Usuario\CadastroUsuario;
+use \GenericMvc\Controllers\Home;
+use \GenericMvc\Controllers\FormularioLogin;
+use \GenericMvc\Controllers\RealizaLogin;
+use \GenericMvc\Controllers\Deslogar;
+use \GenericMvc\Controllers\Usuario\FormularioCadastro as FormularioCadastroUsuario;
+use \GenericMvc\Controllers\Usuario\FormularioEdicao as FormularioEdicaoUsuario;
+use \GenericMvc\Controllers\Usuario\CadastroUsuario;
 
 
 $rotas = [

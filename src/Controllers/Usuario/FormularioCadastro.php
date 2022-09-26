@@ -1,9 +1,9 @@
 <?php 
 
-namespace GestorOrcamento\Controllers\Usuario;
+namespace GenericMvc\Controllers\Usuario;
 
-use GestorOrcamento\Entity\Usuario;
-use GestorOrcamento\Helper\RenderizadorDeHtmlTrait;
+use GenericMvc\Entity\Usuario;
+use GenericMvc\Helper\RenderizadorDeHtmlTrait;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

@@ -1,5 +1,5 @@
 {
-  "name": "gestor-orcamento",
+  "name": "generic-mvc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gustavofaquim/gestor-orcamento.git"
+    "url": "git+https://github.com/gustavofaquim/generic-mvc.git"
   },
   "author": "Gustavo Faquim",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gustavofaquim/gestor-orcamento/issues"
+    "url": "https://github.com/gustavofaquim/generic-mvc/issues"
   },
-  "homepage": "https://github.com/gustavofaquim/gestor-orcamento#readme",
+  "homepage": "https://github.com/gustavofaquim/generic-mvc#readme",
   "dependencies": {
     "node-sass": "^7.0.3"
   }

@@ -1,11 +1,11 @@
 <?php 
 
-namespace GestorOrcamento\Controllers\Usuario;
+namespace GenericMvc\Controllers\Usuario;
 
-use GestorOrcamento\Entity\Usuario;
-use GestorOrcamento\Helper\FlashMessageTrait;
-use GestorOrcamento\Helper\RenderizadorDeHtmlTrait;
-use GestorOrcamento\Infra\EntityManagerCreator;
+use GenericMvc\Entity\Usuario;
+use GenericMvc\Helper\FlashMessageTrait;
+use GenericMvc\Helper\RenderizadorDeHtmlTrait;
+use GenericMvc\Infra\EntityManagerCreator;
 use Doctrine\ORM\EntityManagerInterface;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;

@@ -1,5 +1,5 @@
 <?php
-namespace GestorOrcamento\Entity;
+namespace GenericMvc\Entity;
 /**
  * @Entity
  * @Table(name="usuario")

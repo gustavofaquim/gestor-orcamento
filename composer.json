@@ -1,7 +1,7 @@
 {
     "autoload": {
         "psr-4": {
-            "GestorOrcamento\\": "src/"
+            "GenericMvc\\": "src/"
         }
     },
     "require": {
