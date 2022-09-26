@@ -1,0 +1,44 @@
+$base-font-size: 16px;
+$cor-texto: black;
+$cor-menu: rgba(0, 0, 0, .85);
+$cor-radape: #F8F9FA;
+
+a{
+  text-decoration: none;
+  color: $cor-texto;
+    
+}
+a:hover{
+    text-decoration: none;
+    color: $cor-texto;
+}
+
+span{
+    font-size: 9pt;
+}
+
+.top-menu{
+    background-color:  $cor-menu;
+    
+    a{
+        color: #999;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    a:hover{
+        color: #FFFF;
+    }
+    .link-fto{
+        float: right;
+        margin-right: 30px;
+        border: 1px solid red;
+        .fto-menu{
+            width: 50px;
+        } 
+    }
+}
+
+.rodape{
+    background-color: $cor-radape;
+}
