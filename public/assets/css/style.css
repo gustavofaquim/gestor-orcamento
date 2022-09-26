@@ -1,0 +1,29 @@
+a {
+  text-decoration: none;
+  color: black; }
+
+a:hover {
+  text-decoration: none;
+  color: black; }
+
+span {
+  font-size: 9pt; }
+
+.top-menu {
+  background-color: rgba(0, 0, 0, 0.85); }
+  .top-menu a {
+    color: #999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  .top-menu a:hover {
+    color: #FFFF; }
+  .top-menu .link-fto {
+    float: right;
+    margin-right: 30px;
+    border: 1px solid red; }
+    .top-menu .link-fto .fto-menu {
+      width: 50px; }
+
+.rodape {
+  background-color: #F8F9FA; }

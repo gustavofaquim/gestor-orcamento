@@ -28,6 +28,16 @@ class CadastroUsuario implements RequestHandlerInterface {
         );
         
         
+        $primeiroNome = filter_var(
+            $request->getParsedBody()['primeiroNome'],
+            FILTER_SANITIZE_STRING
+        );
+
+        $ultimoNome = filter_var(
+            $request->getParsedBody()['ultimoNome'],
+            FILTER_SANITIZE_STRING
+        );
+
         $email = filter_var(
             $request->getParsedBody()['email'],
             FILTER_SANITIZE_STRING
@@ -39,6 +49,9 @@ class CadastroUsuario implements RequestHandlerInterface {
         );
 
         $usuario = new Usuario();
+
+        $usuario->__set('primeiroNome',$primeiroNome);
+        $usuario->__set('ultimoNome',$ultimoNome);
         $usuario->__set('email',$email);
 
         $senha = password_hash($senha, PASSWORD_DEFAULT);
@@ -48,15 +61,15 @@ class CadastroUsuario implements RequestHandlerInterface {
         if (!is_null($id) && $id !== false) {
             $usuario->__set('id',$id);
             $this->entityManager->merge($usuario);
-            $this->defineMensagem($tipo, 'Curso atualizado com sucesso');
+            $this->defineMensagem($tipo, 'Usuário atualizado com sucesso');
         } else {
             $this->entityManager->persist($usuario);
-            $this->defineMensagem($tipo, 'Curso inserido com sucesso');
+            $this->defineMensagem($tipo, 'Usuário inserido com sucesso');
         }
 
         $this->entityManager->flush();
 
-        return new Response(302, ['Location' => '/teste']);
+        return new Response(302, ['Location' => '/']);
 
         
     }

@@ -12,10 +12,23 @@ class Usuario
      * @Column(type="integer")
      */
     private $id;
+
+    /**
+     * @Column(type="string")
+     */
+    private $primeiroNome;
+
+    /**
+     * @Column(type="string")
+     */
+    private $ultimoNome;
+
+    
     /**
      * @Column(type="string")
      */
     private $email;
+    
     /**
      * @Column(type="string")
      */
