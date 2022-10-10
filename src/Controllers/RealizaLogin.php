@@ -46,7 +46,8 @@ class RealizaLogin implements RequestHandlerInterface{
 
         if (is_null($usuario) || !$usuario->senhaEstaCorreta($senha)) {
             $this->defineMensagem('danger', 'E-mail ou senha inválidos');
-        
+            var_dump('E-mail ou senha inválidos');
+            exit();
             return $redirecionamentoLogin;
         }
 

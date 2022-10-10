@@ -54,18 +54,28 @@ class CadastroUsuario implements RequestHandlerInterface {
         $usuario->__set('ultimoNome',$ultimoNome);
         $usuario->__set('email',$email);
 
-        $senha = password_hash($senha, PASSWORD_DEFAULT);
-        $usuario->__set('senha',$senha);
+       $user = strtolower($primeiroNome . "" . $ultimoNome);
+       $usuario->__set('usuario',$user);
 
         $tipo = 'success';
         if (!is_null($id) && $id !== false) {
-            $usuario->__set('id',$id);
+            
+            $usuario->__set('idusuario',$id);
+            $usuario->__set('senha',$senha);
+
             $this->entityManager->merge($usuario);
             $this->defineMensagem($tipo, 'Usuário atualizado com sucesso');
         } else {
+            
+
+            $senha = password_hash($senha, PASSWORD_DEFAULT);
+            $usuario->__set('senha',$senha);
+            
             $this->entityManager->persist($usuario);
             $this->defineMensagem($tipo, 'Usuário inserido com sucesso');
         }
+
+       
 
         $this->entityManager->flush();
 

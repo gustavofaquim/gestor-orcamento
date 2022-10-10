@@ -20,8 +20,8 @@
               
               <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="370" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>
 
-              <button type="submit" class="btn btn-primary btn-login">Entrar</button>
-              <a class="btn btn-cadastrar" href="/novo-usuario">Cadastre-se</a>
+              <button type="submit" class="btn btn-primary btn-sm btn-login">Entrar</button>
+              <a class="btn btn-cadastrar btn-cadastro btn-light" href="/novo-usuario">Cadastre-se</a>
             </form>
           </div>
         </div>

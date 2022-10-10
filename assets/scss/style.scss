@@ -3,6 +3,12 @@ $cor-texto: black;
 $cor-menu: rgba(0, 0, 0, .85);
 $cor-radape: #F8F9FA;
 
+
+
+main{
+    width: 100%;
+}
+
 a{
   text-decoration: none;
   color: $cor-texto;
@@ -17,28 +23,143 @@ span{
     font-size: 9pt;
 }
 
-.top-menu{
-    background-color:  $cor-menu;
-    
-    a{
-        color: #999;
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    a:hover{
-        color: #FFFF;
-    }
-    .link-fto{
-        float: right;
-        margin-right: 30px;
-        border: 1px solid red;
-        .fto-menu{
-            width: 50px;
-        } 
-    }
-}
+
 
 .rodape{
     background-color: $cor-radape;
+}
+
+.menu{
+    background-color: black;
+    position: absolute;
+    float: left;
+    width: 80% !important;
+    height: 100%;
+    ul{
+       
+        li{
+            color:#F8F9FA;
+            font-size: 40pt;
+            padding: 40px;
+            border: 1px solid red;
+            list-style-type: none;
+        }
+    }
+}
+.menu-superior{
+    max-width: 100% !important;
+    height: 180px;
+    span{
+        width: 80px;
+        height: 80px;
+    }
+
+    .txtValor{
+        margin: auto;
+        float: left;
+        text-align: center;
+        font-size: 40pt;
+       
+    }
+}
+
+// .collapse:not(.show) {display: none;}
+.container-login{
+    margin-top: 20px;
+    padding: 40px;
+    box-shadow: -5px 9px 17px -10px rgba(0,0,0,0.75);
+    h4{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .form-login{
+    
+        .form-group{
+            padding: 10px 10px 10px 10px;
+            margin-top: 10px;
+    
+            input{
+                border-radius: 2%;
+                border-top:  0;
+                border-left: 0;
+                border-right: 0;
+                padding: 10px;
+            }
+            input:focus{
+                border-radius: 1%;
+                border: 0px solid;
+                // border-color: red;
+                //box-shadow: 0 0 0 .25rem rgba(165, 14, 157, 0.25)
+                //box-shadow: 0 0 0 .10rem rgba(4, 44, 97, 0.25)
+                box-shadow: 0 4px 4px -4px;
+            } 
+        }
+        .btn-login{
+            margin-top: 20px;
+        }
+        .btn-cadastro{
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+    }
+}
+
+
+.pag-inicial{
+    .btn-add{
+        width: 100px !important;
+        height: 100px !important;
+        border-radius: 50% !important;
+        text-align: center;
+        span{
+            font-size: 50pt;
+            text-align: center;
+            margin: auto;
+        }
+    }
+}
+
+
+.formTransacao{
+    margin-top: 50px !important;
+    font-size: 40pt;
+    width: 90%;
+    margin: auto;
+    input{
+        font-size: 45pt;
+        border: 0px solid;
+        text-align: center;
+    }
+    input:focus{
+        border: 0px solid;
+        box-shadow: none;
+    }  
+    label{
+        margin: auto;
+    }
+    select{
+        font-size: 35pt;
+        border: 0px solid;
+    }
+    option{
+        font-size: 10pt;
+        border: 0px solid
+    }
+  
+    select:focus{
+        border: 0px solid;
+        box-shadow: none; 
+    }
+    .div-valor{text-align: center;}
+    .div-conta{label{font-size:28pt;}}
+    .div-coment{input{font-size: 28pt; text-align: left;}label{font-size:20pt;}}
+
+    .btn-add{
+        width: 450px;
+        height: 80px;
+        margin-top: 50px !important;
+        font-size: 30pt;
+        border-radius: 90px;
+    }
+    
 }

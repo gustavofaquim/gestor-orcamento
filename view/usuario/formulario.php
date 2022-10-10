@@ -12,12 +12,12 @@
             <form action="/cadastrar-usuario<?= isset($usuario) ? '?id= ' . $usuario->__get('id') : ''; ?>" class='form-login' method="post">
               
               <div class="form-group">
-                <label for="email">Primeiro Nome</label>
+                <label for="primeiroNome">Primeiro Nome</label>
                 <input type="text" class="form-control" id="primeiroNome" name='primeiroNome'  placeholder="Primeiro Nome" value="<?= isset($usuario) ? $usuario->__get('primeiroNome'): ''; ?>">
               </div>
 
               <div class="form-group">
-                <label for="email">Ultimo Nome</label>
+                <label for="ultimoNome">Ultimo Nome</label>
                 <input type="text" class="form-control" id="ultimoNome" name='ultimoNome'  placeholder="Ultimo Nome" value="<?= isset($usuario) ? $usuario->__get('ultimoNome'): ''; ?>">
               </div>
             
@@ -33,11 +33,12 @@
               </div>
 
               <div class="form-group">
-                <label for="senha">Confirmação de Senha</label>
+                <label for="senha2">Confirmação de Senha</label>
                 <input type="password" class="form-control" id="senha2" name='senha2' placeholder=" Confirmação de Senha" value="<?= isset($usuario) ? $usuario->__get('senha'): ''; ?>">
               </div>
               
               <button type="submit" class="btn btn-primary btn-login">Salvar</button>
+              <a class="btn btn-cadastrar btn-cadastro btn-light" href="/login">Login</a>
             </form>
 
           </div>

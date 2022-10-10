@@ -12,38 +12,20 @@
   </head>
   <body>
 
-   
-      <?php 
-      
 
-      if(isset($_SESSION['logado'])){
-        if($_SESSION['logado'] == True){
-          $usuario = $_SESSION['user'];
-          
+    
+  <nav class="navbar navbar-dark bg-dark menu-superior">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoOculto" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div  class="navbar-brand mb-3 h1 txtValor">Total <br> R$</div>
+  </nav>
 
-          echo "<nav class='nav justify-content-center top-menu'>";
-            echo "<a class='nav-link btn-login' href='/alterar-usuario?id=".$usuario->__get('id')."'>Perfil</a>";
-            echo "<a class='nav-link' href='/'>Home</a>";
-            echo "<a class='nav-link btn-login' href='/deslogar'>Sair</a>";
-          echo"</nav>";
-
-        }else{
-          echo " <nav class='nav justify-content-center top-menu'>";
-            echo "<a class='nav-link' href='/'>Home</a>";
-            echo "<a class='nav-link' href='/post/'>Post</a>";
-            echo "<a class='nav-link btn-login' href='/login'>Entrar</a>";
-          echo"</nav>";
-          
-      }
-      }else{
-        echo " <nav class='nav justify-content-center top-menu'>";
-          echo "<a class='nav-link' href='/'>Home</a>";
-          echo "<a class='nav-link' href='/post/'>Post</a>";
-          echo "<a class='nav-link btn-login' href='/login'>Entrar</a>";
-        echo"</nav>";
-         
-      }
-      
-      ?>
-
+  <div class='collapse container-fluid menu' id='conteudoOculto'>
+    <ul class="">
+    <li class="">Movimentações</li>
+      <li class="">Contas</li>
+      <li class="">Categorias</li>
+    </ul>
+  </div>
     
