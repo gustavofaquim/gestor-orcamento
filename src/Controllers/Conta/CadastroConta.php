@@ -53,12 +53,7 @@ class CadastroConta implements RequestHandlerInterface{
         
         $respositoUser = $this->entityManager->getRepository(Usuario::class);
         $userC = $respositoUser->find(["idusuario" => 1]);
-
-        
-        
-       
-        
-
+    
         $conta = new Conta();
 
         $conta->__set('saldo', $saldo);
@@ -78,9 +73,6 @@ class CadastroConta implements RequestHandlerInterface{
             $this->defineMensagem($tipo, 'Conta criada com sucesso');
         }
 
-        echo "<pre>";
-            var_dump($conta);
-        echo "</pre>";
         $this->entityManager->flush();
 
         return new Response(302, ['Location' => '/']);

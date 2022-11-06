@@ -2,9 +2,12 @@
 
 namespace GenericMvc\Controllers\Transacao;
 
-use GenericMvc\Entity\Transacao;
 use GenericMvc\Entity\Conta;
+use GenericMvc\DAO\TransacaoDAO;
+use GenericMvc\Models\Transacao;
+use GenericMvc\Models\Tipo;
 use GenericMvc\Controllers\Conta\ListarContas;
+use GenericMvc\Controllers\Categoria\ListarCategorias;
 use GenericMvc\Helper\RenderizadorDeHtmlTrait;
 use GenericMvc\Helper\FlashMessageTrait;
 use Doctrine\ORM\EntityManagerInterface;
@@ -35,14 +38,13 @@ class CadastroTransacao implements RequestHandlerInterface {
             FILTER_SANITIZE_NUMBER_FLOAT
         );
 
-        $conta = filter_var(
+        $idconta = filter_var(
             $request->getParsedBody()['conta'],
             FILTER_VALIDATE_INT
         );
 
-        var_dump($conta);
 
-        $categoria = filter_var(
+        $idcategoria = filter_var(
             $request->getParsedBody()['categoria'],
             FILTER_VALIDATE_INT
         );
@@ -62,26 +64,24 @@ class CadastroTransacao implements RequestHandlerInterface {
 
         $transacao->__set('valor',$valor);
 
-        //$contasL = new ListarContas();
-        //$contaL->pesquisarPorId($conta);
+        $contaL = new ListarContas();
+        $conta = $contaL->pesquisarPorId($idconta);
+      
 
-        $contaC = new Conta();
-        $contaC->__set('idconta', 1);
-        $contaC->__set('idusuario', 2);
-        $contaC->__set('nome','Santander');
-        $contaC->__set('descricao','Conta Salário');
-        $contaC->__set('saldo','1000');
+        $categoriaL = new ListarCategorias();
+        $categoria = $categoriaL->pesquisarPorId($idcategoria);
+        
+        $tipo = new Tipo();
+        $tipo->__set('idtipo',1);
+        $tipo->__set('descricao', 'despesa');
 
-
-        $transacao->__set('idconta',$contaC);
-        $transacao->__set('idcategoria',$categoria);
-        $transacao->__set('idtipo',1);
+        $transacao->__set('conta',$conta);
+        $transacao->__set('categoria',$categoria);
+        $transacao->__set('tipo',$tipo);
         $transacao->__set('data',$data);
         $transacao->__set('comentario',$coment);
 
-        echo "<br> <br> <pre>";
-        var_dump($transacao);
-        echo"</pre> <br>";
+        $transacaoDAO = new TransacaoDAO();
 
         $tipo = 'success';
         if (!is_null($id) && $id !== false) {
@@ -92,7 +92,8 @@ class CadastroTransacao implements RequestHandlerInterface {
             $this->defineMensagem($tipo, 'Usuário atualizado com sucesso');
         } else {
             
-            $this->entityManager->persist($transacao);
+            $transacaoDAO->salvar($transacao);
+            //$this->entityManager->persist($transacao);
             $this->defineMensagem($tipo, 'Usuário inserido com sucesso');
         }
 

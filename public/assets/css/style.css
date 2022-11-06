@@ -25,7 +25,6 @@ span {
     color: #F8F9FA;
     font-size: 40pt;
     padding: 40px;
-    border: 1px solid red;
     list-style-type: none; }
 
 .menu-superior {
@@ -66,15 +65,18 @@ span {
     margin-top: 20px;
     margin-left: 10px; }
 
-.pag-inicial .btn-add {
-  width: 100px !important;
-  height: 100px !important;
-  border-radius: 50% !important;
-  text-align: center; }
-  .pag-inicial .btn-add span {
-    font-size: 50pt;
-    text-align: center;
-    margin: auto; }
+.pag-inicial {
+  text-align: center;
+  padding: 20px; }
+  .pag-inicial .btn-add {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+    text-align: center; }
+    .pag-inicial .btn-add span {
+      font-size: 60px;
+      text-align: center;
+      margin: auto; }
 
 .formTransacao {
   margin-top: 50px !important;
@@ -114,3 +116,77 @@ span {
     margin-top: 50px !important;
     font-size: 30pt;
     border-radius: 90px; }
+
+.icon-menu {
+  background-color: #F8F9FA; }
+
+.accordion {
+  margin-bottom: 40px !important; }
+  .accordion .accordion-button:not(.collapsed) {
+    color: black; }
+  .accordion h1 {
+    text-align: center;
+    font-size: 35pt;
+    margin-top: 10px; }
+  .accordion .accordionOne .accordion-header {
+    border-bottom: 10px solid #FFD700 !important;
+    background-color: #FFD700 !important; }
+  .accordion .accordionTwo .accordion-header {
+    border-bottom: 10px solid #1E90FF !important;
+    background-color: #1E90FF !important; }
+  .accordion .accordionThree .accordion-header {
+    border-bottom: 10px solid #DC143C !important;
+    background-color: #DC143C !important; }
+  .accordion .accordion-item {
+    font-size: 70px !important; }
+  .accordion .ln-descricao {
+    width: 100%;
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: #FFFFFF; }
+    .accordion .ln-descricao i {
+      padding: 20px;
+      border-radius: 60px;
+      color: #FFFFFF; }
+    .accordion .ln-descricao span {
+      font-size: 35pt;
+      margin: auto; }
+    .accordion .ln-descricao .categoria {
+      margin-left: 10px; }
+    .accordion .ln-descricao .valor {
+      float: right; }
+
+.accordion-button {
+  font-size: 50px !important;
+  height: 100px !important; }
+
+.accordionOne {
+  color: red; }
+
+.accordion {
+  --bs-accordion-active-bg: '#d116ba' !important; }
+
+/* listagem de contas */
+.card-contas {
+  width: 90% !important;
+  font-size: 40pt;
+  margin: auto;
+  margin-top: 30px; }
+  .card-contas .descricao {
+    float: left; }
+  .card-contas .valor {
+    float: right; }
+  .card-contas li {
+    padding: 25px; }
+
+/* Card total */
+.card-total {
+  width: 100%;
+  border: 1px solid red;
+  text-align: center; }
+  .card-total h3 {
+    font-size: 30pt !important;
+    color: rgba(0, 0, 0, 0.514); }
+  .card-total h4 {
+    font-size: 50pt !important; }

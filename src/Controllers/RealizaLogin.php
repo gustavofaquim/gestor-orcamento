@@ -2,7 +2,9 @@
 
 namespace GenericMvc\Controllers;
 
-use GenericMvc\Entity\Usuario;
+//use GenericMvc\Entity\Usuario;
+use GenericMvc\Models\Usuario;
+use GenericMvc\Controllers\Usuario\ConsultarUsuario;
 use GenericMvc\Helper\FlashMessageTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Nyholm\Psr7\Response;
@@ -16,18 +18,19 @@ class RealizaLogin implements RequestHandlerInterface{
 
     private $repositorioDeUsuarios;
 
-    public function __construct(EntityManagerInterface $entityManager){
+   /* public function __construct(EntityManagerInterface $entityManager){
         $this->repositorioDeUsuarios = $entityManager->getRepository(Usuario::class);
-    }
+    } */
 
     public function handle(ServerRequestInterface $request): ResponseInterface{
-        $email = filter_var(
+        $login = filter_var(
             $request->getParsedBody()['email'],
-            FILTER_VALIDATE_EMAIL
+            FILTER_SANITIZE_STRING
         );
+        
 
         $redirecionamentoLogin = new Response(302, ['Location' => '/login']);
-        if (is_null($email) || $email === false) {
+        if (is_null($login) || $login === false) {
             $this->defineMensagem(
                 'danger',
                 'O e-mail digitado não é um e-mail válido.'
@@ -42,7 +45,12 @@ class RealizaLogin implements RequestHandlerInterface{
             FILTER_SANITIZE_STRING
         );
 
-        $usuario = $this->repositorioDeUsuarios->findOneBy(['email' => $email]);
+        
+
+        //$usuario = $this->repositorioDeUsuarios->findOneBy(['email' => $email]);
+        $usuarioC = new ConsultarUsuario();
+        $usuario = $usuarioC->buscarUsuario($login);
+        
 
         if (is_null($usuario) || !$usuario->senhaEstaCorreta($senha)) {
             $this->defineMensagem('danger', 'E-mail ou senha inválidos');
@@ -50,9 +58,13 @@ class RealizaLogin implements RequestHandlerInterface{
             exit();
             return $redirecionamentoLogin;
         }
-
+        //var_dump($usuario);
+        //exit();
         $_SESSION['logado'] = true;
-        $_SESSION['user'] = $usuario;
+        if(!isset($_SESSION['user'])){
+            $_SESSION['user'] = $usuario;
+        }
+
         return new Response(302, ['Location' => '/']);
     }
 

@@ -4,6 +4,8 @@
 namespace GenericMvc\Controllers\Conta;
 
 use GenericMvc\Entity\Conta;
+use GenericMvc\Entity\Usuario;
+use GenericMvc\DAO\ContaDAO;
 use GenericMvc\Helper\RenderizadorDeHtmlTrait;
 use GenericMvc\Helper\FlashMessageTrait;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,24 +17,45 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class ListarContas implements RequestHandlerInterface {
    
+    use RenderizadorDeHtmlTrait;
+
     private $repositorioDeContas;
 
-    public function __construct(EntityManagerInterface $entityManager){
+    public function __construct(){}
+
+   
+    public function handle (ServerRequestInterface $request): ResponseInterface{
+       
+        $idusuario = $_SESSION['user']->idusuario;
+
+        $contaD = new ContaDAO();
+        $contas = $contaD->listarPorUsuario($idusuario);
+
+        $html = $this->renderizaHtml('conta/lista.php', [
+            
+            'contas' => $contas
+        ]);
+
+        return new Response(200, [ ], $html);
+    } 
+
+    public function listarContasUsuarioLogado(){
         
-        $this->repositorioDeContas = $entityManager->getRepository(Conta::class);
-    }
-
-    public function handle(ServerRequestInterface $request): ResponseInterface{
-        $conta =  $this->repositorioDeContas->findBy(["idconta" => $id]);
-        var_dump("Entrou aqui". $conta);
-
-        return $conta; 
+        $idusuario = $_SESSION['user']->idusuario;
+        
+        $contaD = new ContaDAO();
+        $contas = $contaD->listarPorUsuario($idusuario);
+       
+        return $contas;
     }
 
     public function pesquisarPorId($id){
-       $conta =  $this->repositorioDeContas->findBy(["idconta" => $id]);
+        
+        $contaD = new ContaDAO();
+        $conta = $contaD->buscarPorId($id);
 
-        return $conta; 
+        return $conta;
     }
+
 }
 

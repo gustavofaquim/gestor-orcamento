@@ -9,27 +9,34 @@ namespace GenericMvc\Entity;
  class Categoria{
 
     /**
+     * @var integer $idcategoria
      * @Id
      * @GeneratedValue
      * @Column(type="integer")
      */
-    private $idcateogira;
+    private $idcategoria;
 
     /**
+    * @var string $descricao
     * @Column(type="string")
     */
     private $descricao;
 
 
     /**
+    * @var string $icon
     * @Column(type="string")
     */
     private $icon;
 
-    /**
-    * @OneToMany(targetEntity="Transacao", mappedBy="categoria")
-    */
-    private $transacoes;
+   public function __get($atributo){
+      return $this->$atributo;
+   }
+
+   public function __set($atributo,$valor){
+      $this->$atributo = $valor;
+   }
+
  }
 
 ?>

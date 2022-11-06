@@ -50,14 +50,14 @@ class Usuario
     private $senha;
 
     /**
-     * @var array $contas
-     * @ORM\OneToMany(targetEntity="Conta", mappedBy="usuario")
+     * @var object $contas
+     * OneToMany(targetEntity="Conta", mappedBy="usuario")
      */
     private $contas;
     
 
     public function __construct(){
-        $this->conta = new ArrayCollection();
+        $this->contas = new ArrayCollection();
     }
 
     public function setConta(ArrayCollection $contas){

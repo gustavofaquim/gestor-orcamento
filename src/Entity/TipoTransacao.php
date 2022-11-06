@@ -1,54 +1,32 @@
-<?php 
-
+<?php
 namespace GenericMvc\Entity;
+
 
 use GenericMvc\Entity\Transacao;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+
 /**
  * @Entity
- * @Table(name="conta")
+ * @Table(name="tipo_transacao")
  */
-
- class Conta{
-
+class TipoTransacao
+{
     /**
-     * @var integer $idconta
+     * @var integer $idtipo
      * @Id
      * @GeneratedValue
      * @Column(type="integer")
      */
-    private $idconta;
+    private $idtipo;
 
-
-    /** 
-    * @var object $usuario
-    * @ManyToOne(targetEntity="Usuario", inversedBy="contas")
-    * @JoinColumn(name="usuario", referencedColumnName="idusuario", nullable=false)
-    */
-    private $usuario;
-
-
+  
     /**
-    * @var string $nome
-    * @Column(type="string")
-    */
-    private $nome;
-
-
-    /**
-     * @var string $descricao
+    * @var string $descricao
     * @Column(type="string")
     */
     private $descricao;
-
-
-    /**
-    * @var double $saldo
-    * @Column(type="string")
-    */
-    private $saldo;
 
 
 
@@ -56,7 +34,7 @@ use Doctrine\Common\Collections\ArrayCollection;
      * @var ArrayCollection Coleção de Transações
      *
      * @ORM\OneToMany(targetEntity="Transacao", mappedBy="conta")
-     */
+    */
     private $transacoes;
 
 
@@ -86,6 +64,5 @@ use Doctrine\Common\Collections\ArrayCollection;
         return $this;
     }
 
- }
 
-?>
+}

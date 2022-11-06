@@ -11,6 +11,13 @@ use \GenericMvc\Controllers\Transacao\FormularioTransacao;
 use \GenericMvc\Controllers\Transacao\CadastroTransacao;
 use \GenericMvc\Controllers\Conta\FormularioConta;
 use \GenericMvc\Controllers\Conta\CadastroConta;
+use \GenericMvc\Controllers\Conta\ListarContas;
+use \GenericMvc\Controllers\Categoria\ListarCategorias;
+use \GenericMvc\Controllers\Categoria\FormularioCategoria;
+use \GenericMvc\Controllers\Categoria\CadastroCategoria;
+use \GenericMvc\Controllers\Categoria\FormEditaCategoria;
+use \GenericMvc\Controllers\Conta\PesquisarContas;
+use \GenericMvc\Controllers\Usuario\ListaUsuarios;
 
 
 $rotas = [
@@ -24,7 +31,15 @@ $rotas = [
     '/nova-transacao' => FormularioTransacao::class,
     '/cadastrar-transacao' => CadastroTransacao::class,
     '/nova-conta' => FormularioConta::class,
-    '/cadastrar-conta' => CadastroConta::class
+    '/cadastrar-conta' => CadastroConta::class,
+    '/listar-contas' => ListarContas::class,
+    '/listar-categorias' => ListarCategorias::class,
+    '/nova-categoria' => FormularioCategoria::class,
+    '/cadastrar-categoria' => CadastroCategoria::class,
+    '/alterar-categoria' => FormEditaCategoria::class,
+    '/teste' => PesquisarContas::class,
+    '/usuarios' => ListaUsuarios::class
+
 ];
 
 return $rotas;

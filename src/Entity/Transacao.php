@@ -2,6 +2,8 @@
 namespace GenericMvc\Entity;
 
 use GenericMvc\Entity\Conta;
+use GenericMvc\Entity\Categoria;
+use GenericMvc\Entity\TipoTransacao;
 /**
  * @Entity
  * @Table(name="transacao")
@@ -9,6 +11,7 @@ use GenericMvc\Entity\Conta;
 class Transacao
 {
     /**
+     * @var integer $idtransacao
      * @Id
      * @GeneratedValue
      * @Column(type="integer")
@@ -17,34 +20,43 @@ class Transacao
 
 
     /**
-    * @OManyToOne(targetEntity: Conta::class, inversedBy="transacoes")
-    * @JoinColumn(nullable=false)
+    * @var object $conta
+    * @OManyToOne(targetEntity: "Conta")
+    * @JoinColumn(name="conta", referencedColumnName="idconta", nullable=false)
     */
     private $conta;
 
     
     /**
-    * @Column(type="integer")
+    * @var object $tipo
+    * @OManyToOne(targetEntity="TipoTransacao")
+    * @JoinColumn(name="tipo", referencedColumnName="idtipo", nullable=false)
     */
     private $tipo;
 
+
     /**
+    * @var object $categoria
     * @OManyToOne(targetEntity="Categoria")
-    * @JoinColumn(nullable=false)
+    * @JoinColumn(name="categoria", referencedColumnName="idcateogira", nullable=false)
     */
     private $categoria;
 
+
     /**
-     * @Column(type="decimal")
+     * @var double $valor
+     * @Column(type="string")
      */
     private $valor;
 
-      /**
-     * @Column(type="string")
-     */
+    /**
+    * @var string $data
+    * @Column(type="string")
+    */
     private $data;
 
     /**
+    * @var string $comentario
     * @Column(type="string")
     */
     private $comentario;
@@ -58,7 +70,7 @@ class Transacao
         $this->$atributo = $valor;
     }
 
-    public function setConta(Conta $conta){
+    public function addConta(Conta $conta){
         $this->conta = $conta;
         return $this;
     }

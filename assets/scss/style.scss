@@ -2,7 +2,7 @@ $base-font-size: 16px;
 $cor-texto: black;
 $cor-menu: rgba(0, 0, 0, .85);
 $cor-radape: #F8F9FA;
-
+$bs-accordion-active-bg: 'red' !important;
 
 
 main{
@@ -41,7 +41,6 @@ span{
             color:#F8F9FA;
             font-size: 40pt;
             padding: 40px;
-            border: 1px solid red;
             list-style-type: none;
         }
     }
@@ -106,13 +105,15 @@ span{
 
 
 .pag-inicial{
+    text-align: center;
+    padding: 20px;
     .btn-add{
         width: 100px !important;
         height: 100px !important;
         border-radius: 50% !important;
         text-align: center;
         span{
-            font-size: 50pt;
+            font-size: 60px;
             text-align: center;
             margin: auto;
         }
@@ -163,3 +164,122 @@ span{
     }
     
 }
+
+.icon-menu{
+    background-color: #F8F9FA;
+}
+
+
+.accordion{
+    margin-bottom: 40px !important;
+    
+    .accordion-button:not(.collapsed){
+        color: black;
+    }
+    h1{
+        text-align: center;
+        font-size: 35pt;
+        margin-top: 10px;
+        
+    }
+    .accordionOne{
+        .accordion-header{
+           border-bottom: 10px solid #FFD700 !important;
+           background-color:  #FFD700 !important;
+        }
+       
+    }
+    .accordionTwo{
+        .accordion-header{
+            border-bottom: 10px solid #1E90FF !important;
+            background-color:  #1E90FF !important;
+        }
+        
+    }
+    .accordionThree{
+        .accordion-header{
+            border-bottom: 10px solid #DC143C!important;
+            background-color:  #DC143C !important;
+        }
+        
+    }
+  
+    
+    .accordion-item{
+        font-size: 70px !important;
+    }
+    .ln-descricao{
+        width: 100%;
+        padding: 10px;
+        border-radius: 16px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: #FFFFFF;
+
+        i{
+            padding: 20px;
+            border-radius: 60px;
+            color: #FFFFFF;
+        }
+        span{
+            font-size: 35pt;
+            margin: auto;
+        }
+        .categoria{
+            margin-left: 10px;
+
+        }
+        .valor{
+            float: right;
+        }
+    }
+}
+
+ .accordion-button{
+    font-size: 50px !important;
+    height: 100px !important;
+ }
+
+ .accordionOne{
+    color: red;
+ }
+
+ .accordion{
+    --bs-accordion-active-bg: '#d116ba' !important;
+ }
+
+
+
+ /* listagem de contas */
+
+ .card-contas{
+    width: 90% !important;
+    font-size: 40pt;
+    margin: auto;
+    margin-top: 30px;
+
+    .descricao{
+        float: left;
+    }
+    .valor{
+        float: right;
+    }
+    li{
+        padding: 25px;
+    }
+ }
+
+
+ /* Card total */
+ .card-total{
+    width: 100%;
+    border: 1px solid red;
+    text-align: center;
+    
+    h3{
+        font-size: 30pt !important;
+        color:rgba(0, 0, 0, 0.514)
+    }
+    h4{
+        font-size: 50pt !important;
+    }
+ }

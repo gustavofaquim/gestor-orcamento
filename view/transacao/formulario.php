@@ -3,10 +3,9 @@
 <main>
   <div class="container-fluid">
     <div class='formTransacao'>
-
-
+       
         <form action="/cadastrar-transacao<?= isset($usuario) ? '?id= ' . $usuario->__get('id') : ''; ?>" class='' method="post">
-                
+            
             <div class="form-group div-valor">
                 <label for="valor">R$</label>
                 <input type="text" class="form-control" id="valor" name='valor' placeholder="0" value="<?= isset($usuario) ? $usuario->__get('primeiroNome'): ''; ?>">
@@ -16,10 +15,11 @@
             <div class="form-group div-conta">
                 <label for="conta">Conta</label>
                     <select class="form-control" id="conta" name='conta'>
-                    <option value='1'>Satander</option>
-                    <option value='1'>Nubank</option>
-                    <option value='1'>Caixa</option>
-                    <option value='1'>Banco do Brasil</option>
+                    <?php 
+                        foreach ($contas as $conta){
+                            echo "<option value='".$conta->__get('idconta')."'>".$conta->__get('nome')."</option>"; 
+                        }
+                    ?>
                 </select>
             </div>
 
@@ -27,11 +27,14 @@
 
             <div class="form-group div-conta">
                 <label for="categoria">Categoria</label>
+                
                     <select class="form-control" id="categoria" name="categoria">
-                    <option value='1'>Transporte</option>
-                    <option value='1'>Lanche</option>
-                    <option value='1'>Almoço</option>
-                    <option value='1'>Lazer</option>
+                    <?php 
+                        foreach ($categorias as $categoria){
+                            //var_dump($categoria->__get('descricao'));
+                            echo "<option value='".$categoria->__get('idcategoria')."'> <p><i class='".$categoria->__get('icon')."'></i> ".$categoria->__get('descricao')."</p></option>"; 
+                        }
+                    ?>
                 </select>
             </div>
             <br>
