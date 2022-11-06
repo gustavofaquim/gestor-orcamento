@@ -4,7 +4,8 @@
 namespace GenericMvc\Controllers\Conta;
 
 use GenericMvc\Entity\Conta;
-use GenericMvc\Entity\Usuario;
+//use GenericMvc\Entity\Usuario;
+use GenericMvc\Models\Usuario;
 use GenericMvc\DAO\ContaDAO;
 use GenericMvc\Helper\RenderizadorDeHtmlTrait;
 use GenericMvc\Helper\FlashMessageTrait;
@@ -42,6 +43,14 @@ class ListarContas implements RequestHandlerInterface {
     public function listarContasUsuarioLogado(){
         
         $idusuario = $_SESSION['user']->idusuario;
+        
+        $contaD = new ContaDAO();
+        $contas = $contaD->listarPorUsuario($idusuario);
+       
+        return $contas;
+    }
+
+    public function listarContasPorUsuario($idusuario){
         
         $contaD = new ContaDAO();
         $contas = $contaD->listarPorUsuario($idusuario);

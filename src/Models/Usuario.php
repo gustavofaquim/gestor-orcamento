@@ -12,7 +12,7 @@ class Usuario{
     private string $email;
     private string $senha;
     private Categoria $categorias;
-    private Contas $contas;
+    private Array $contas = [];
 
     public function __get($atributo){
         return $this->$atributo;
@@ -20,6 +20,10 @@ class Usuario{
 
     public function __set($atributo,$valor){
         $this->$atributo = $valor;
+    }
+
+    public function addConta($valor){
+        $this->contas = $valor;
     }
 
     public function senhaEstaCorreta(string $senhaPura): bool{

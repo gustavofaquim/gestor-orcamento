@@ -5,6 +5,7 @@ namespace GenericMvc\DAO;
 use GenericMvc\DAO\Database;
 use PDO;
 use GenericMvc\Models\Usuario;
+use GenericMvc\Controllers\Conta\ListarContas;
 
 class UsuarioDAO{
 
@@ -79,6 +80,16 @@ class UsuarioDAO{
         $usuario->__set('usuario', $objeto->usuario);
         $usuario->__set('email', $objeto->email);
         $usuario->__set('senha', $objeto->senha);
+        
+        $contasC = new ListarContas();
+        $contas = $contasC->ListarContasPorUsuario($usuario->__get('idusuario'));
+        
+       
+        $usuario->addConta($contas);
+
+        // echo"<br><br><br>";
+        //var_dump($usuario);
+        //exit();
 
         return $usuario;
     }
