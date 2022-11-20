@@ -23,10 +23,35 @@ class TipoDAO{
         $tipo = new Tipo();
 
 
-        $tipo->__set('idconta', $objeto->idtipo);
-        $tipo->__set('nome', $objeto->descricao);
+        $tipo->__set('idtipo', $objeto->idtipo);
+        $tipo->__set('descricao', $objeto->descricao);
         
 
         return $tipo;
+      }
+
+      public function listarTodos(){
+
+        $con = new Database();
+
+        $result = $con->executeQuery('SELECT  * FROM tipo_transacao');
+    
+        $result = $result->fetchAll(PDO::FETCH_OBJ);
+
+        $tipos = array();
+
+       
+
+        foreach($result as $id => $objeto){
+
+          $tipo = new Tipo();
+
+          $tipo->__set('idtipo', $objeto->idtipo);
+          $tipo->__set('descricao', $objeto->descricao);
+
+          $tipos[] = $tipo;
+        }
+       
+        return $tipos;
       }
 }

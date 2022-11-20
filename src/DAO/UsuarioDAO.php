@@ -6,6 +6,7 @@ use GenericMvc\DAO\Database;
 use PDO;
 use GenericMvc\Models\Usuario;
 use GenericMvc\Controllers\Conta\ListarContas;
+use GenericMvc\Controllers\Transacao\ListarTransacoes;
 
 class UsuarioDAO{
 
@@ -73,7 +74,7 @@ class UsuarioDAO{
         $objeto = $result->fetch(PDO::FETCH_OBJ);
 
         $usuario = new Usuario();
-
+        
         $usuario->__set('idusuario', $objeto->idusuario);
         $usuario->__set('primeiroNome', $objeto->primeiroNome);
         $usuario->__set('ultimoNome', $objeto->ultimoNome);
@@ -84,13 +85,28 @@ class UsuarioDAO{
         $contasC = new ListarContas();
         $contas = $contasC->ListarContasPorUsuario($usuario->__get('idusuario'));
         
-       
-        $usuario->addConta($contas);
+        $usuario->__set('contas', $contas);
+        //$usuario->addConta($contas); -- Se bugar voltar isso
 
-        // echo"<br><br><br>";
-        //var_dump($usuario);
-        //exit();
+        $transacaoC = new ListarTransacoes();
 
+        $transacoes = [];
+
+
+        foreach($contas as $conta){
+            $transacao = $transacaoC->listarTransacoesPorConta($conta->__get('idconta'));
+    
+            foreach($transacao as $trans){
+                $usuario->addTransacao($trans);
+                //var_dump($trans);
+                //exit();
+            }
+            
+            //$usuario->__set('transacoes', $transacao);  
+            //var_dump($transacao);
+            
+        }
+      
         return $usuario;
     }
 }

@@ -62,8 +62,6 @@ class TransacaoDAO{
 
     $result = $result->fetchAll(PDO::FETCH_OBJ);
 
-    
-
     $transacoes = array();
 
     $contaL = new ListarContas();
@@ -83,6 +81,11 @@ class TransacaoDAO{
       $transacao->__set('conta', $conta);
       $transacao->__set('categoria', $categoria);
       $transacao->__set('tipo', $tipo);
+      
+      //var_dump("GenericMvc\DAO\TransacaoDAO");
+      //var_dump($tipo);
+      //exit();
+      
       $transacao->__set('valor', $objeto->valor);
       $transacao->__set('data', $objeto->data);
       $transacao->__set('comentario', $objeto->comentario);
@@ -90,8 +93,7 @@ class TransacaoDAO{
       $transacoes[] = $transacao;
 
     }
-    
-    //var_dump($transacoes);
+  
    
     return $transacoes;
 
@@ -101,7 +103,7 @@ class TransacaoDAO{
   public function listarPorData($idconta,$tipo,$dt){
     $con = new Database();
 
-    var_dump($dt);
+    //var_dump($dt);
     
     $result = $con->executeQuery("SELECT * FROM transacao WHERE conta = :ID AND month(data) = :DT", array(
       'ID' =>  $idconta,

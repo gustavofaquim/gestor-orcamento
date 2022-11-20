@@ -8,7 +8,7 @@
             
        
        <div class='pag-inicial'>
-        <a href="/nova-transacao"><button type="button" class="btn btn-warning btn-add"><span>+</span></button></a>
+        <a href="/nova-transacao?id=1"><button type="button" class="btn btn-warning btn-add"><span>+</span></button></a>
        </div>
 
         <?php 

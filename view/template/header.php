@@ -23,7 +23,8 @@
 
   <div class='collapse container-fluid menu' id='conteudoOculto'>
     <ul class="">
-      <a href="/nova-transacao"><li class="">Movimentações</li></a>
+      <a href="/nova-transacao?id=1"><li class="">Despesas</li></a>
+      <a href="/nova-transacao?id=2"><li class="">Receitas</li></a>
       <a href='/listar-contas'><li class=""><i class="fa-solid fa-piggy-bank"></i> Contas</li></a>
       <a href="/listar-categorias"><li class="">Categorias</li></a>
     </ul>

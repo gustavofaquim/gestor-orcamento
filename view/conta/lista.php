@@ -8,7 +8,12 @@
         Contas
     </div>
     <ul class="list-group list-group-flush">
-    <?php foreach ($contas as $conta): ?>
+    <?php 
+        //echo "-------------------------------------------<br><br>";
+        //var_dump($contas);
+    
+    ?>
+    <?php foreach ($contas1 as $conta): ?>
         <li class="list-group-item">
             <div class='descricao'><?= $conta->__get('nome'); ?> </div>
             <div class='valor'>R$<?= $conta->__get('saldo'); ?> </div>

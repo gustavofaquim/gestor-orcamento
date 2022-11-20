@@ -1,25 +1,25 @@
 
 
 <?php 
-    
+
+use GenericMvc\Controllers\Conta\ListarContas;
+use GenericMvc\Controllers\Usuario\ConsultarUsuario;
+
+
+
 if(isset($_SESSION['user'])){
-    $user = $_SESSION['user'];
-    $contas = $user->__get('contas');
-    $valorTotal = 0;
-    foreach($contas as $conta){ 
-        $valorTotal += $conta->__get('saldo');
-    }
-    
+
+    $usuar = new ConsultarUsuario();
+    $user = $usuar->buscarUsuario($_SESSION['user']->__get('email'));
+    //var_dump($user->__get('transacoes'));
+    //exit();
+    $x = $user->saldoTotal();
+     
+    echo"<div class='card-total'>";
+    echo"<h3>Total</h3>";
+    echo"<h4>R$".$x."</h4>";
+    echo"</div>";
+   
+}  
    
 ?>
-
-<div class="card-total">
-    <h3>Total</h3>
-    <h4>R$ <?= $valorTotal ?></h4>
- </div>
-
- <?php 
- 
-} // Fechamento do IF da sessão 
- 
- ?>

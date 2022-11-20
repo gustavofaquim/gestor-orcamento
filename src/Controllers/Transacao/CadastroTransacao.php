@@ -5,8 +5,9 @@ namespace GenericMvc\Controllers\Transacao;
 use GenericMvc\Entity\Conta;
 use GenericMvc\DAO\TransacaoDAO;
 use GenericMvc\Models\Transacao;
-use GenericMvc\Models\Tipo;
+use GenericMvc\Models\Tipo; 
 use GenericMvc\Controllers\Conta\ListarContas;
+use GenericMvc\Controllers\Conta\CadastroConta;
 use GenericMvc\Controllers\Categoria\ListarCategorias;
 use GenericMvc\Helper\RenderizadorDeHtmlTrait;
 use GenericMvc\Helper\FlashMessageTrait;
@@ -84,17 +85,22 @@ class CadastroTransacao implements RequestHandlerInterface {
         $transacaoDAO = new TransacaoDAO();
 
         $tipo = 'success';
+       
         if (!is_null($id) && $id !== false) {
             
             $transacao->__set('idtransacao',$id);
-
             $this->entityManager->merge($transacao);
-            $this->defineMensagem($tipo, 'Usuário atualizado com sucesso');
+            $this->defineMensagem($tipo, 'Atualizado com sucesso :> ');
         } else {
             
             $transacaoDAO->salvar($transacao);
-            //$this->entityManager->persist($transacao);
-            $this->defineMensagem($tipo, 'Usuário inserido com sucesso');
+            
+            $this->defineMensagem($tipo, 'Inserido com sucesso :> ');
+
+
+            // Quando cadastrar transacao atualizar o saldo da conta
+            $contaC = new CadastroConta();
+            $conta = $contaC->atualizar($conta, $transacao->__get('valor'));
         }
 
        

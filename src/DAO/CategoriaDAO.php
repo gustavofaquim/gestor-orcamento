@@ -5,6 +5,8 @@ namespace GenericMvc\DAO;
 use GenericMvc\DAO\Database;
 use PDO;
 use GenericMvc\Models\Usuario;
+use GenericMvc\Models\Tipo;
+use GenericMvc\Controllers\Tipo\ListarTipos;
 use GenericMvc\Models\Categoria;
 
 
@@ -65,11 +67,17 @@ class CategoriaDAO{
 
     $categorias = array();
 
+
+    $tipoC = new ListarTipos();
+    
+
     foreach($result as $id => $objeto){
       
       $categoria = new Categoria();
+      $tipo = $tipoC->pesquisarPorId($objeto->tipotransacao);
 
       $categoria->__set('idcategoria', $objeto->idcategoria);
+      $categoria->__set('tipotransacao', $tipo);
       $categoria->__set('descricao', $objeto->descricao);
       $categoria->__set('icon',$objeto->icon);
       $categoria->__set('cor',$objeto->cor);
@@ -94,9 +102,13 @@ class CategoriaDAO{
    //var_dump($objeto);
 
     $categoria = new Categoria();
-    //$usuario = new UsuarioDAO();
+
+    $tipoC = new ListarTipos();
+
+    $tipo = $tipoC->pesquisarPorId($objeto->tipotransacao);
 
     $categoria->__set('idcategoria', $objeto->idcategoria);
+    $categoria->__set('tipotransacao', $tipo);
     $categoria->__set('descricao', $objeto->descricao);
     $categoria->__set('icon', $objeto->icon);
     $categoria->__set('cor',$objeto->cor);

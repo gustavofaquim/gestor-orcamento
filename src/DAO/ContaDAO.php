@@ -37,6 +37,8 @@ class ContaDAO{
             $conta->__set('usuario', $user);
 
             $contas[] = $conta;
+
+           // var_dump($contas);
             
         }
 
@@ -70,5 +72,30 @@ class ContaDAO{
         $conta->__set('usuario', $user);
 
         return $conta;
-      }
+    }
+
+    public function atualizar(Conta $conta){
+
+        $con = new Database();
+        
+        $idconta = $conta->__get('idconta');
+        $saldo = $conta->__get('saldo');
+
+        $query = 'UPDATE conta SET saldo = :saldo WHERE idconta = :idconta';
+        
+        $stmt = $con->prepare($query);
+        
+        $stmt->bindParam(':saldo', $saldo);
+        $stmt->bindParam(':idconta',  $idconta);
+
+        $result = $stmt->execute();
+        
+        if (!$result){
+            var_dump( $stmt->errorInfo() );
+            exit;
+        }
+        
+        return $result;
+
+    }
 }

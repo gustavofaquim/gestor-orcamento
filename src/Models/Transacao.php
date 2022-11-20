@@ -7,7 +7,6 @@ use GenericMvc\Models\Categoria;
 
  class Transacao{
 
-    
     private int $idtransacao;
     private Conta $conta;
     private Tipo $tipo;

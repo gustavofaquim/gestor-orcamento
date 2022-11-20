@@ -59,6 +59,16 @@ class ListarTransacoes implements RequestHandlerInterface {
         return $transacoes;
     }
 
+    public function listarTransacoesPorConta($idconta){
+
+        $transacaoD = new TransacaoDAO();
+        $transacao = $transacaoD->listarPorConta($idconta);
+        //echo "GenericMvc\Controllers\Transacao\ListarTransacoes.php ----------------------  <br>";
+        //var_dump($transacao);
+        //exit();
+        return $transacao;
+    }
+
     public function listarTransacoesPorData($x){
 
 

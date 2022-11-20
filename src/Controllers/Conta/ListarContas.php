@@ -32,9 +32,11 @@ class ListarContas implements RequestHandlerInterface {
         $contaD = new ContaDAO();
         $contas = $contaD->listarPorUsuario($idusuario);
 
+       // var_dump($contas);
+
         $html = $this->renderizaHtml('conta/lista.php', [
-            
-            'contas' => $contas
+
+            'contas1' => $contas
         ]);
 
         return new Response(200, [ ], $html);

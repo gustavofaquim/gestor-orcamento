@@ -3,7 +3,8 @@
 namespace GenericMvc\Controllers\Conta;
 
 use GenericMvc\Entity\Usuario;
-use GenericMvc\Entity\Conta;
+use GenericMvc\Models\Conta;
+use GenericMvc\DAO\ContaDAO;
 use GenericMvc\Controllers\Usuario\ConsultarUsuario;
 use GenericMvc\Helper\RenderizadorDeHtmlTrait;
 use GenericMvc\Helper\FlashMessageTrait;
@@ -20,10 +21,7 @@ class CadastroConta implements RequestHandlerInterface{
 
     private $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManager){
-        $this->entityManager = $entityManager;
-    }
-
+  
     public function handle(ServerRequestInterface $request): ResponseInterface{
         
         $id = filter_var(
@@ -77,5 +75,18 @@ class CadastroConta implements RequestHandlerInterface{
 
         return new Response(302, ['Location' => '/']);
 
+    }
+
+    public function atualizar($cont, $valor){
+
+        
+        // Inserindo o novo Saldo
+        $saldo = $cont->__get('saldo') + $valor;
+        $cont->__set('saldo', $saldo);
+
+        $contaD = new ContaDAO();        
+        $conta = $contaD->atualizar($cont);
+
+        return $conta;
     }
 }

@@ -34,5 +34,13 @@ class ListarTipos implements RequestHandlerInterface {
         return $tipo;
     }
 
+    public function listarTodos(){
+
+        $tipoDAO = new TipoDAO();
+        $tipos = $tipoDAO->listarTodos();
+
+        return $tipos;
+    }
+
 }
 
