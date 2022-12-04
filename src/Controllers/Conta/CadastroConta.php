@@ -81,8 +81,7 @@ class CadastroConta implements RequestHandlerInterface{
 
         
         // Inserindo o novo Saldo
-        $saldo = $cont->__get('saldo') + $valor;
-        $cont->__set('saldo', $saldo);
+        $cont->__set('saldo', $valor);
 
         $contaD = new ContaDAO();        
         $conta = $contaD->atualizar($cont);

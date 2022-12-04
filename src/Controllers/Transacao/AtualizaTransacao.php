@@ -4,6 +4,7 @@ namespace GenericMvc\Controllers\Transacao;
 
 use GenericMvc\Entity\Usuario;
 use GenericMvc\Controllers\Conta\ListarContas;  
+use GenericMvc\Controllers\Transacao\ListarTransacoes; 
 use GenericMvc\Controllers\Categoria\ListarCategorias;
 use GenericMvc\Controllers\Conta\PesquisarContas;
 use GenericMvc\Controllers\Tipo\ListarTipos;
@@ -15,7 +16,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 
-class FormularioTransacao implements RequestHandlerInterface{
+class AtualizaTransacao implements RequestHandlerInterface{
    
     use RenderizadorDeHtmlTrait;
 
@@ -24,25 +25,34 @@ class FormularioTransacao implements RequestHandlerInterface{
 
         $idusuario = $_SESSION['user']->__get('idusuario');
         
-  
+
+        $id = filter_var(
+            $request->getQueryParams()['id'],
+            FILTER_VALIDATE_INT
+        );
+       
+
+        $transacaoL = new ListarTransacoes();
+        $transacao = $transacaoL->buscarPorId($id);
+
 
         // Lista as Contas
         $contasC = new ListarContas();
         $contas = $contasC->listarContasUsuarioLogado();
 
         // Listas os Tipos
-        $tiposC = new ListarTipos();
-        $tipos = $tiposC->listarTodos();
+        //$tiposC = new ListarTipos();
+        //$tipos = $tiposC->listarTodos();
         
-        // Listas as Cateogiras
+         //Listas as Cateogiras
         $categoriasC = new ListarCategorias();
         $categorias = $categoriasC->listarCategoriasPorUsuario();
         
        
         $html = $this->renderizaHtml('transacao/formulario.php',[
-            'contas' => $contas,
+            'transacao' => $transacao,
             'categorias' => $categorias,
-            'tipos' => $tipos
+            'contas' => $contas
         ]);
 
         return new Response(200, [], $html);

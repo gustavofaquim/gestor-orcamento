@@ -8,7 +8,9 @@ use \GenericMvc\Controllers\Usuario\FormularioCadastro as FormularioCadastroUsua
 use \GenericMvc\Controllers\Usuario\FormularioEdicao as FormularioEdicaoUsuario;
 use \GenericMvc\Controllers\Usuario\CadastroUsuario;
 use \GenericMvc\Controllers\Transacao\FormularioTransacao;
+use \GenericMvc\Controllers\Transacao\ListarTransacoes;
 use \GenericMvc\Controllers\Transacao\CadastroTransacao;
+use \GenericMvc\Controllers\Transacao\AtualizaTransacao;
 use \GenericMvc\Controllers\Conta\FormularioConta;
 use \GenericMvc\Controllers\Conta\CadastroConta;
 use \GenericMvc\Controllers\Conta\ListarContas;
@@ -29,6 +31,7 @@ $rotas = [
     '/cadastrar-usuario' => CadastroUsuario::class,
     '/alterar-usuario' => FormularioEdicaoUsuario::class,
     '/nova-transacao' => FormularioTransacao::class,
+    '/atualiza-transacao/$id' => AtualizaTransacao::class,
     '/cadastrar-transacao' => CadastroTransacao::class,
     '/nova-conta' => FormularioConta::class,
     '/cadastrar-conta' => CadastroConta::class,
@@ -39,7 +42,6 @@ $rotas = [
     '/alterar-categoria' => FormEditaCategoria::class,
     '/teste' => PesquisarContas::class,
     '/usuarios' => ListaUsuarios::class
-
 ];
 
 return $rotas;

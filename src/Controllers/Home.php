@@ -19,14 +19,18 @@ class Home implements RequestHandlerInterface{
     public function handle(ServerRequestInterface $request): ResponseInterface{
         
         $transacaoL = new ListarTransacoes();
-        //$transacoesD = $transacaoL->listarTransacoesPorData('d');
-        //$transacoesM = $transacaoL->listarTransacoesPorData('m');
+        $transacoesM = $transacaoL->listarTransacoesMes();
+        $transacoesY = $transacaoL->listarTransacoesAno();
         //$transacoesY = $transacaoL->listarTransacoesPorData('d');
         $transacoes = $transacaoL->listarTransacoes();
+
+        
         
 
         $html = $this->renderizaHtml('inicio.php', [
-            'transacoes' => $transacoes
+            'transacoes' => $transacoes,
+            'transacoesM' => $transacoesM,
+            'transacoesY' => $transacoesY,
         ]);
 
         return new Response(200, [], $html);

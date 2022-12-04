@@ -16,10 +16,11 @@ span {
   background-color: #F8F9FA; }
 
 .menu {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.938);
   position: absolute;
+  z-index: 10;
   float: left;
-  width: 80% !important;
+  width: 100% !important;
   height: 100%; }
   .menu ul li {
     color: #F8F9FA;
@@ -121,7 +122,8 @@ span {
   background-color: #F8F9FA; }
 
 .accordion {
-  margin-bottom: 40px !important; }
+  margin-bottom: 40px !important;
+  position: initial; }
   .accordion .accordion-button:not(.collapsed) {
     color: black; }
   .accordion h1 {
@@ -183,7 +185,6 @@ span {
 /* Card total */
 .card-total {
   width: 100%;
-  border: 1px solid red;
   text-align: center; }
   .card-total h3 {
     font-size: 30pt !important;

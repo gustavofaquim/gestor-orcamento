@@ -51,6 +51,42 @@ class TransacaoDAO{
     return $result;
   }
 
+  public function atualizar(Transacao $transacao){
+
+    $con = new Database();
+
+    $idtransacao = $transacao->__get('idtransacao');
+    $idconta = $transacao->__get('conta')->__get('idconta');
+    $idtipo = $transacao->__get('tipo')->__get('idtipo');
+    $idcategoria = $transacao->__get('categoria')->__get('idcategoria');
+    $valor = $transacao->__get('valor');
+    $data = $transacao->__get('data');
+    $comentario = $transacao->__get('comentario');
+
+    $query = 'UPDATE transacao SET valor = :valor, conta = :conta, tipo = :tipo, categoria = :categoria, data = :data, comentario = :comentario  WHERE idtransacao = :idtransacao';
+    
+    $stmt = $con->prepare($query);
+     
+    $stmt->bindParam(':valor', $valor);
+    $stmt->bindParam(':conta', $idconta);
+    $stmt->bindParam(':tipo', $idtipo);
+    $stmt->bindParam(':categoria', $idcategoria);
+    $stmt->bindParam(':data', $data);
+    $stmt->bindParam(':comentario', $comentario);
+    $stmt->bindParam(':idtransacao',  $idtransacao);
+
+    $result = $stmt->execute();
+        
+        if (!$result){
+            var_dump( $stmt->errorInfo() );
+            exit;
+        }
+        
+        return $result;
+
+
+  }
+
 
 
   public function listarPorConta($idconta){
@@ -98,50 +134,41 @@ class TransacaoDAO{
     return $transacoes;
 
   }
+  
 
 
-  public function listarPorData($idconta,$tipo,$dt){
+  public function buscarPorId($id){
     $con = new Database();
 
-    //var_dump($dt);
-    
-    $result = $con->executeQuery("SELECT * FROM transacao WHERE conta = :ID AND month(data) = :DT", array(
-      'ID' =>  $idconta,
-      'DT' =>  $dt
+    $result = $con->executeQuery('SELECT  * FROM transacao WHERE idtransacao = :ID', array(
+      'ID' =>  $id
     ));
-    
-    $result = $result->fetchAll(PDO::FETCH_OBJ);
-  
-    $transacoes = array();
 
+    $objeto = $result->fetch(PDO::FETCH_OBJ);
+
+   
     $contaL = new ListarContas();
     $categoriaL = new ListarCategorias();
     $tipoL = new ListarTipos();
 
-
-    foreach($result as $id => $objeto){
-
-      $transacao = new Transacao();
-      $conta = $contaL->pesquisarPorId($objeto->conta);
+    $conta = $contaL->pesquisarPorId($objeto->conta);
     
-      $categoria = $categoriaL->pesquisarPorId($objeto->categoria);
-      $tipo = $tipoL->pesquisarPorId($objeto->tipo);
+    $categoria = $categoriaL->pesquisarPorId($objeto->categoria);
+    $tipo = $tipoL->pesquisarPorId($objeto->tipo);
 
-      $transacao->__set('idtransacao', $objeto->idtransacao);
-      $transacao->__set('conta', $conta);
-      $transacao->__set('categoria', $categoria);
-      $transacao->__set('tipo', $tipo);
-      $transacao->__set('valor', $objeto->valor);
-      $transacao->__set('data', $objeto->data);
-      $transacao->__set('comentario', $objeto->comentario);
+    $transacao = new Transacao();
 
-      $transacoes[] = $transacao;
+    $transacao->__set('idtransacao', $objeto->idtransacao);
+    $transacao->__set('conta', $conta);
+    $transacao->__set('categoria', $categoria);
+    $transacao->__set('tipo', $tipo);
+    $transacao->__set('valor', $objeto->valor);
+    $transacao->__set('data', $objeto->data);
+    $transacao->__set('comentario', $objeto->comentario);
 
-    }
-    
-    //var_dump($transacoes);
-   
-    return $transacoes;
+    return $transacao;
 
   }
+
+
 }

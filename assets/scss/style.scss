@@ -1,12 +1,13 @@
 $base-font-size: 16px;
 $cor-texto: black;
-$cor-menu: rgba(0, 0, 0, .85);
+$cor-menu: rgba(0, 0, 0, 0.938);
 $cor-radape: #F8F9FA;
 $bs-accordion-active-bg: 'red' !important;
 
 
 main{
     width: 100%;
+    
 }
 
 a{
@@ -30,10 +31,11 @@ span{
 }
 
 .menu{
-    background-color: black;
+    background-color: $cor-menu;
     position: absolute;
+    z-index: 10;
     float: left;
-    width: 80% !important;
+    width: 100% !important;
     height: 100%;
     ul{
        
@@ -170,8 +172,10 @@ span{
 }
 
 
+
 .accordion{
     margin-bottom: 40px !important;
+    position: initial;
     
     .accordion-button:not(.collapsed){
         color: black;
@@ -184,10 +188,10 @@ span{
     }
     .accordionOne{
         .accordion-header{
-           border-bottom: 10px solid #FFD700 !important;
-           background-color:  #FFD700 !important;
+            border-bottom: 10px solid #FFD700 !important;
+            background-color:  #FFD700 !important;
         }
-       
+        
     }
     .accordionTwo{
         .accordion-header{
@@ -203,7 +207,7 @@ span{
         }
         
     }
-  
+    
     
     .accordion-item{
         font-size: 70px !important;
@@ -234,18 +238,20 @@ span{
     }
 }
 
- .accordion-button{
+    .accordion-button{
     font-size: 50px !important;
     height: 100px !important;
- }
+    }
 
- .accordionOne{
+    .accordionOne{
     color: red;
- }
+    }
 
- .accordion{
+    .accordion{
     --bs-accordion-active-bg: '#d116ba' !important;
- }
+    }
+
+
 
 
 
@@ -272,7 +278,6 @@ span{
  /* Card total */
  .card-total{
     width: 100%;
-    border: 1px solid red;
     text-align: center;
     
     h3{

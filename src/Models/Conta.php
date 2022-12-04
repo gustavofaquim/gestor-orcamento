@@ -27,8 +27,15 @@ use GenericMvc\Models\Usuario;
         $this->$atributo = $valor;
     }
 
+    public function atualizarSaldo($valor, $tipo){
+        if($tipo == 1){
+            $this->saldo = $this->saldo - $valor;
+        }else if($tipo == 2){
+            $this->saldo = $this->saldo + $valor;
+        }
+        return $this->saldo;
+    }
 
-   
 
  }
 
