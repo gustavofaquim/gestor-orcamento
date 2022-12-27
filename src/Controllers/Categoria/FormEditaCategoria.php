@@ -2,8 +2,9 @@
 
 namespace GenericMvc\Controllers\Categoria;
 
-
-use GenericMvc\Entity\Categoria;
+use GenericMvc\Models\Categoria;
+use GenericMvc\Controllers\Tipo\ListarTipos;
+use GenericMvc\Controllers\Categoria\ListarCategorias;
 use GenericMvc\Helper\FlashMessageTrait;
 use GenericMvc\Helper\RenderizadorDeHtmlTrait;
 use GenericMvc\Infra\EntityManagerCreator;
@@ -19,10 +20,6 @@ class FormEditaCategoria implements RequestHandlerInterface{
     
     private $repositorioCategoria;
 
-    public function __construct(EntityManagerInterface $entityManager){
-        $this->repositorioCategoria = $entityManager->getRepository(Categoria::class);
-    }
-
 
     public function handle(ServerRequestInterface $request): ResponseInterface{
         $id = filter_var(
@@ -36,10 +33,18 @@ class FormEditaCategoria implements RequestHandlerInterface{
             return $resposta;
         }
 
-        $categoria = $this->repositorioCategoria->find($id);
+        //$categoria = new Categoria();
+        $listarCategorias = new ListarCategorias();
+        $categoria = $listarCategorias->pesquisarPorId($id);
+
+        $listarTipos = new ListarTipos();
+        $tipos = $listarTipos->listarTodos();
+
+        //$categoria = $this->repositorioCategoria->find($id);
 
         $html = $this->renderizaHtml('categoria/formulario.php', [
             'categoria' => $categoria,
+            'tipostransacao' => $tipos
         ]);
 
         return new Response(200, [], $html);

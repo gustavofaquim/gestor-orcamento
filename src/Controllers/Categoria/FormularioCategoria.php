@@ -3,6 +3,7 @@
 namespace GenericMvc\Controllers\Categoria;
 
 use GenericMvc\Entity\Categoria;
+use GenericMvc\Controllers\Tipo\ListarTipos;
 use GenericMvc\Helper\RenderizadorDeHtmlTrait;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
@@ -15,7 +16,14 @@ class FormularioCategoria implements RequestHandlerInterface{
     use RenderizadorDeHtmlTrait;
 
     public function handle(ServerRequestInterface $request): ResponseInterface{
-        $html = $this->renderizaHtml('categoria/formulario.php',[]);
+        
+        $listarTipos = new ListarTipos();
+        $tipos = $listarTipos->listarTodos();
+        
+        
+        $html = $this->renderizaHtml('categoria/formulario.php',[
+            'tipostransacao' => $tipos
+        ]);
 
         return new Response(200, [], $html);
     }
