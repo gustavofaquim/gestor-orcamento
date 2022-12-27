@@ -14,7 +14,10 @@
   <body>
 
 
-    
+   <?php 
+    // Só exibe o menu se o usuário estiver logado
+    if(isset($_SESSION['logado'])){
+   ?> 
   <nav class="navbar navbar-dark bg-dark menu-superior">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoOculto" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Alterna navegação">
       <span class="navbar-toggler-icon"></span>
@@ -23,11 +26,15 @@
 
   <div class='collapse container-fluid menu' id='conteudoOculto'>
     <ul class="">
-    <a href="/"><li class="">Inicio</li></a>
-      <a href='/listar-contas'><li class=""><i class="fa-solid fa-piggy-bank"></i> Contas</li></a>
-      <a href="/listar-categorias"><li class="">Categorias</li></a>
+    <a href="/"><li class=""><i class="fa-solid fa-house-user"></i>&nbsp&nbsp&nbsp Inicio</li></a>
+      <a href='/listar-contas'><li class=""> <i class="fa-solid fa-piggy-bank"></i>&nbsp&nbsp&nbsp Contas</li> </a>
+      <a href="/listar-categorias"><li class=""><i class="fa-regular fa-rectangle-list"></i>&nbsp&nbsp&nbsp Categorias</li></a>
     </ul>
   </div>
+  <?php 
+  
+    }
+  ?>
 
   <?php include 'total.php'; ?>
     

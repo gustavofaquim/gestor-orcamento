@@ -7,7 +7,7 @@
 
         <form action="/cadastrar-conta<?= isset($usuario) ? '?id= ' . $usuario->__get('id') : ''; ?>" class='' method="post">
                 
-            <div class="form-group div-valor">
+            <div class="form-group div-valor ">
                 <label for="saldo">R$</label>
                 <input type="text" class="form-control" id="saldo" name='saldo' placeholder="0" value="<?= isset($usuario) ? $usuario->__get('primeiroNome'): ''; ?>">
             </div>

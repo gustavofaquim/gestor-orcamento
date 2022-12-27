@@ -1,17 +1,32 @@
 <?php include __DIR__ . '/../template/header.php'; ?>
 
-<ul class="list-group">
-  
-    <?php foreach ($categorias as $categoria): ?>
-        <a href="/alterar-categoria?id=<?= $categoria->__get('idcategoria');?>">
-        <div class='card-categoria'>
-            <img src="<?= $categoria->__get('icon'); ?>" class="img-fluid" alt="">
-            <p><?= $categoria->__get('descricao'); ?></p>
-        </div><a/>
-       
-    <?php endforeach; ?>
-</ul>
+<div class='container-fluid tela-contas'>
+    <div class="card card-contas">
+        <div class="card-header">
+            Categorias
+        </div>
+        <ul class="list-group list-group-flush">
+        <?php 
+            //echo "-------------------------------------------<br><br>";
+            //var_dump($contas);
+        
+        ?>
+        <?php foreach ($categorias as $categoria): ?>
+            <li class="list-group-item">
+                <a href="/alterar-categoria?id=<?= $categoria->__get('idcategoria');?>">
+                    <div id='icon-categoria' style="background-color: <?= $categoria->__get('cor')  ?>" class='descricao'> <i class='<?= $categoria->__get('icon') ?>'> </i> </div>
+                    <div class='valor'><?= $categoria->__get('descricao'); ?> </div>
+                </a>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 
-<a href='/nova-categoria' class="btn btn-warning btn-add">+</a>
+    <a href='/nova-categoria' class="btn btn-warning btn-add"><span>+</span></a>
+</div>
+
+
+
+
 
 <?php include __DIR__ . '/../template/footer.php'; ?>

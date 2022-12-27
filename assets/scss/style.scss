@@ -37,15 +37,30 @@ span{
     float: left;
     width: 100% !important;
     height: 100%;
+    a{
+        text-decoration: none;
+    }
     ul{
+        width: 100%;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
        
         li{
             color:#F8F9FA;
             font-size: 40pt;
             padding: 40px;
+            padding-right: 0px !important;
+            margin-left: -10px;
+            width: 100%;
             list-style-type: none;
         }
+        li:hover{
+            background-color: rgba(56, 54, 54, 0.637) !important;
+        }
+        
+
     }
+    
 }
 .menu-superior{
     max-width: 100% !important;
@@ -65,19 +80,31 @@ span{
 }
 
 // .collapse:not(.show) {display: none;}
-.container-login{
-    margin-top: 20px;
-    padding: 40px;
-    box-shadow: -5px 9px 17px -10px rgba(0,0,0,0.75);
+
+.container-login,.container-cadastro{
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    font-size: 40pt;
+    //border: 1px solid;
+    padding: 30px;
+    padding-top: 80px;
+    //box-shadow: -5px 9px 17px -10px rgba(0,0,0,0.75);
+    box-shadow: 0px 15px 33px -14px rgba(122,117,122,0.81);
     h4{
         text-align: center;
-        margin-bottom: 30px;
+        font-size: 65pt;
     }
     .form-login{
+        margin-top: 200px;
+        
     
         .form-group{
             padding: 10px 10px 10px 10px;
-            margin-top: 10px;
+            margin-top: 90px;
+            text-align: left;
     
             input{
                 border-radius: 2%;
@@ -85,6 +112,7 @@ span{
                 border-left: 0;
                 border-right: 0;
                 padding: 10px;
+                font-size: 40pt;
             }
             input:focus{
                 border-radius: 1%;
@@ -96,11 +124,22 @@ span{
             } 
         }
         .btn-login{
-            margin-top: 20px;
+            margin-top: 120px;
+            font-size: 40pt;
+            border-radius: 10px;
+            padding: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
         }
         .btn-cadastro{
-            margin-top: 20px;
+            margin-top: 90px;
+            margin-bottom: 50px;
             margin-left: 10px;
+            font-size: 40pt;
+            border-radius: 10px;
+            padding: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
         }
     }
 }
@@ -125,17 +164,20 @@ span{
 
 .formTransacao{
     margin-top: 50px !important;
+    text-align: center;
     font-size: 40pt;
     width: 90%;
     margin: auto;
     input{
         font-size: 45pt;
         border: 0px solid;
-        text-align: center;
+        border-radius: 0;
+        border-bottom: 1px solid;
+        text-align: left;
     }
     input:focus{
-        border: 0px solid;
         box-shadow: none;
+        border-bottom: 1px solid;
     }  
     label{
         margin: auto;
@@ -153,22 +195,38 @@ span{
         border: 0px solid;
         box-shadow: none; 
     }
-    .div-valor{text-align: center;}
-    .div-conta{label{font-size:28pt;}}
+    .div-valor{
+        text-align: center; 
+        #saldo{
+            border-bottom: 0px solid !important;
+            text-align: center;
+        }
+    }
+    .div-conta{
+        label{font-size:28pt;}
+        text-align: left;
+    
+    }
     .div-coment{input{font-size: 28pt; text-align: left;}label{font-size:20pt;}}
 
     .btn-add{
-        width: 450px;
-        height: 80px;
-        margin-top: 50px !important;
-        font-size: 30pt;
-        border-radius: 90px;
+        width: 250px;
+        height: 70px;
+        font-size: 20pt;
+        border-radius: 100px;
+        margin-top: 150px;
     }
     
 }
-
 .icon-menu{
     background-color: #F8F9FA;
+}
+
+.transacoes{
+    a{
+        text-decoration: none;
+        color:rgba(39, 38, 38, 0.5);
+    }
 }
 
 
@@ -256,29 +314,53 @@ span{
 
 
  /* listagem de contas */
+.tela-contas{
+    text-align: center;
+    #icon-categoria{
+        padding: 20px;
+        border-radius: 50px;
+    }
+    a{
+        text-decoration: none;
+        color: $cor-texto;
+    }
+    .card-contas{
+        width: 90% !important;
+        font-size: 40pt;
+        margin: auto;
+        margin-top: 30px;
+    
+        .descricao{
+            float: left;
+        }
+        .valor{
+            float: right;
+        }
+        li{
+            padding: 25px;
+        }
+    }   
+    .btn-add{
+        width: 100px !important;
+        height: 100px !important;
+        border-radius: 50% !important;
+        text-align: center;
+        margin-top: 90px;
+        span{
+            font-size: 60px;
+            text-align: center;
+            margin: auto;
+        }
+    }
+}
 
- .card-contas{
-    width: 90% !important;
-    font-size: 40pt;
-    margin: auto;
-    margin-top: 30px;
-
-    .descricao{
-        float: left;
-    }
-    .valor{
-        float: right;
-    }
-    li{
-        padding: 25px;
-    }
- }
 
 
  /* Card total */
  .card-total{
     width: 100%;
     text-align: center;
+    background-color: #64656646;
     
     h3{
         font-size: 30pt !important;
@@ -288,3 +370,25 @@ span{
         font-size: 50pt !important;
     }
  }
+
+
+ /* Categoria */
+ .area-categoria{
+    border: 1px solid red !important;
+    text-align: center;
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    .card-categoria{
+        width: 400px !important;
+        height: 100px !important;
+        padding: 0px;
+        border: 1px solid green;
+        padding: 20px;
+    }
+    
+}
+
+
+ 

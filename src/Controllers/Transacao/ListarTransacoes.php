@@ -54,7 +54,7 @@ class ListarTransacoes implements RequestHandlerInterface {
 
         foreach($contas as $conta){
             $idconta = $conta->__get('idconta');
-            $transacoes[] = $transacaoD->listarPorConta($idconta);
+            $transacoes[] = $transacaoD->buscaPorConta($idconta);
         }
 
        
@@ -69,23 +69,27 @@ class ListarTransacoes implements RequestHandlerInterface {
         $contas = $contaL->listarContasUsuarioLogado();
 
         $transacoes = array();
+        
+       
 
         foreach($contas as $conta){
             $idconta = $conta->__get('idconta');
-            $transacoes[] = $transacaoD->listarPorConta($idconta);
-        }
-        
-        
-        foreach($transacoes as $transacao){
-            foreach($transacao as $trans){
-                $mes = (new DateTime($trans->__get('data')))->format('m');
+
+            $trans = $transacaoD->buscaPorConta($idconta);
+           
+            foreach($trans as $transacao){
+                
+                $mes = (new DateTime($transacao->__get('data')))->format('m');
                 if($mes == date('m') ){
-                    $result[] =  $trans;
+                    $transacoes[] = $transacao;
                 }
+                
             }
             
+           
         }
-        return $result;
+        
+        return $transacoes;
     
     }
 
@@ -97,59 +101,46 @@ class ListarTransacoes implements RequestHandlerInterface {
         $contas = $contaL->listarContasUsuarioLogado();
 
         $transacoes = array();
+        
 
         foreach($contas as $conta){
             $idconta = $conta->__get('idconta');
-            $transacoes[] = $transacaoD->listarPorConta($idconta);
-        }
-        
-        $result = array();
-        foreach($transacoes as $transacao){
-            $x = 0;
-            $cont = 0;
-            $aux = $transacao[$cont];
-            $valor = 0;
-            
-         
 
-            foreach($transacao as $trans){
-                var_dump($trans);
-               
-                $mes = (new DateTime($trans->__get('data')))->format('Y');
-                if($mes == date('Y') ){
-                    $cont++;
-
-                   // Somando os valores dos itens da mesma categoria
-                   if($aux->__get('categoria')->__get('idcategoria') == $trans->__get('categoria')->__get('idcategoria')){
-                        $valor += $trans->__get('valor');
-                        $posic = $trans->__get('id');
-                        $x++;
-                   }
-                   if($x > 1){
-                    $aux->__set('valor', $valor);
-                   
-                    unset($result[array_search('["idtransacao":"GenericMvc\Models\Transacao":private]=> int('.$posic.')',$result)]);
-                   
-                   
-                    $x = 0;
+            $trans = $transacaoD->buscaPorConta($idconta);
+           
+            foreach($trans as $transacao){
+                
+                $ano = (new DateTime($transacao->__get('data')))->format('Y');
+                if($ano == date('Y') ){
                     
-                    $result[] = $aux;
-                    break;
-
-                   }
-                    $result[] =  $trans;
+                    // Realizar agrupamento por categoria
+                    if(in_array($transacao->__get('categoria'), $trans)){
+                        var_dump('Achouuu');
+                        exit();
+                    }
+                    else{
+                        echo "GenericMvc\Controllers\Transacao\ListarTranascoes <pre>;";
+                        var_dump($transacao);
+                        echo "</pre>";
+                        //var_dump(in_array('', $trans));
+                        //exit();
+                    }
+                    $transacoes[] = $transacao;
                 }
+                
             }
             
+           
         }
-        return $result;
+            
+        return $transacoes;
     
     }
 
     public function listarTransacoesPorConta($idconta){
 
         $transacaoD = new TransacaoDAO();
-        $transacao = $transacaoD->listarPorConta($idconta);
+        $transacao = $transacaoD->buscaPorConta($idconta);
         //echo "GenericMvc\Controllers\Transacao\ListarTransacoes.php ----------------------  <br>";
         //var_dump($transacao);
         //exit();

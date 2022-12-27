@@ -88,8 +88,7 @@ class TransacaoDAO{
   }
 
 
-
-  public function listarPorConta($idconta){
+  public function buscaPorConta($idconta){
     $con = new Database();
 
     $result = $con->executeQuery('SELECT  * FROM transacao WHERE conta = :ID', array(
@@ -129,7 +128,7 @@ class TransacaoDAO{
       $transacoes[] = $transacao;
 
     }
-  
+
    
     return $transacoes;
 

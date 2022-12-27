@@ -22,11 +22,22 @@ span {
   float: left;
   width: 100% !important;
   height: 100%; }
-  .menu ul li {
-    color: #F8F9FA;
-    font-size: 40pt;
-    padding: 40px;
-    list-style-type: none; }
+  .menu a {
+    text-decoration: none; }
+  .menu ul {
+    width: 100%;
+    padding-left: 0px !important;
+    padding-right: 0px !important; }
+    .menu ul li {
+      color: #F8F9FA;
+      font-size: 40pt;
+      padding: 40px;
+      padding-right: 0px !important;
+      margin-left: -10px;
+      width: 100%;
+      list-style-type: none; }
+    .menu ul li:hover {
+      background-color: rgba(56, 54, 54, 0.637) !important; }
 
 .menu-superior {
   max-width: 100% !important;
@@ -40,31 +51,52 @@ span {
     text-align: center;
     font-size: 40pt; }
 
-.container-login {
-  margin-top: 20px;
-  padding: 40px;
-  box-shadow: -5px 9px 17px -10px rgba(0, 0, 0, 0.75); }
-  .container-login h4 {
+.container-login, .container-cadastro {
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  font-size: 40pt;
+  padding: 30px;
+  padding-top: 80px;
+  box-shadow: 0px 15px 33px -14px rgba(122, 117, 122, 0.81); }
+  .container-login h4, .container-cadastro h4 {
     text-align: center;
-    margin-bottom: 30px; }
-  .container-login .form-login .form-group {
-    padding: 10px 10px 10px 10px;
-    margin-top: 10px; }
-    .container-login .form-login .form-group input {
-      border-radius: 2%;
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-      padding: 10px; }
-    .container-login .form-login .form-group input:focus {
-      border-radius: 1%;
-      border: 0px solid;
-      box-shadow: 0 4px 4px -4px; }
-  .container-login .form-login .btn-login {
-    margin-top: 20px; }
-  .container-login .form-login .btn-cadastro {
-    margin-top: 20px;
-    margin-left: 10px; }
+    font-size: 65pt; }
+  .container-login .form-login, .container-cadastro .form-login {
+    margin-top: 200px; }
+    .container-login .form-login .form-group, .container-cadastro .form-login .form-group {
+      padding: 10px 10px 10px 10px;
+      margin-top: 90px;
+      text-align: left; }
+      .container-login .form-login .form-group input, .container-cadastro .form-login .form-group input {
+        border-radius: 2%;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        padding: 10px;
+        font-size: 40pt; }
+      .container-login .form-login .form-group input:focus, .container-cadastro .form-login .form-group input:focus {
+        border-radius: 1%;
+        border: 0px solid;
+        box-shadow: 0 4px 4px -4px; }
+    .container-login .form-login .btn-login, .container-cadastro .form-login .btn-login {
+      margin-top: 120px;
+      font-size: 40pt;
+      border-radius: 10px;
+      padding: 10px;
+      padding-left: 40px;
+      padding-right: 40px; }
+    .container-login .form-login .btn-cadastro, .container-cadastro .form-login .btn-cadastro {
+      margin-top: 90px;
+      margin-bottom: 50px;
+      margin-left: 10px;
+      font-size: 40pt;
+      border-radius: 10px;
+      padding: 10px;
+      padding-left: 40px;
+      padding-right: 40px; }
 
 .pag-inicial {
   text-align: center;
@@ -81,16 +113,19 @@ span {
 
 .formTransacao {
   margin-top: 50px !important;
+  text-align: center;
   font-size: 40pt;
   width: 90%;
   margin: auto; }
   .formTransacao input {
     font-size: 45pt;
     border: 0px solid;
-    text-align: center; }
+    border-radius: 0;
+    border-bottom: 1px solid;
+    text-align: left; }
   .formTransacao input:focus {
-    border: 0px solid;
-    box-shadow: none; }
+    box-shadow: none;
+    border-bottom: 1px solid; }
   .formTransacao label {
     margin: auto; }
   .formTransacao select {
@@ -104,22 +139,31 @@ span {
     box-shadow: none; }
   .formTransacao .div-valor {
     text-align: center; }
-  .formTransacao .div-conta label {
-    font-size: 28pt; }
+    .formTransacao .div-valor #saldo {
+      border-bottom: 0px solid !important;
+      text-align: center; }
+  .formTransacao .div-conta {
+    text-align: left; }
+    .formTransacao .div-conta label {
+      font-size: 28pt; }
   .formTransacao .div-coment input {
     font-size: 28pt;
     text-align: left; }
   .formTransacao .div-coment label {
     font-size: 20pt; }
   .formTransacao .btn-add {
-    width: 450px;
-    height: 80px;
-    margin-top: 50px !important;
-    font-size: 30pt;
-    border-radius: 90px; }
+    width: 250px;
+    height: 70px;
+    font-size: 20pt;
+    border-radius: 100px;
+    margin-top: 150px; }
 
 .icon-menu {
   background-color: #F8F9FA; }
+
+.transacoes a {
+  text-decoration: none;
+  color: rgba(39, 38, 38, 0.5); }
 
 .accordion {
   margin-bottom: 40px !important;
@@ -170,24 +214,57 @@ span {
   --bs-accordion-active-bg: '#d116ba' !important; }
 
 /* listagem de contas */
-.card-contas {
-  width: 90% !important;
-  font-size: 40pt;
-  margin: auto;
-  margin-top: 30px; }
-  .card-contas .descricao {
-    float: left; }
-  .card-contas .valor {
-    float: right; }
-  .card-contas li {
-    padding: 25px; }
+.tela-contas {
+  text-align: center; }
+  .tela-contas #icon-categoria {
+    padding: 20px;
+    border-radius: 50px; }
+  .tela-contas a {
+    text-decoration: none;
+    color: black; }
+  .tela-contas .card-contas {
+    width: 90% !important;
+    font-size: 40pt;
+    margin: auto;
+    margin-top: 30px; }
+    .tela-contas .card-contas .descricao {
+      float: left; }
+    .tela-contas .card-contas .valor {
+      float: right; }
+    .tela-contas .card-contas li {
+      padding: 25px; }
+  .tela-contas .btn-add {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+    text-align: center;
+    margin-top: 90px; }
+    .tela-contas .btn-add span {
+      font-size: 60px;
+      text-align: center;
+      margin: auto; }
 
 /* Card total */
 .card-total {
   width: 100%;
-  text-align: center; }
+  text-align: center;
+  background-color: #64656646; }
   .card-total h3 {
     font-size: 30pt !important;
     color: rgba(0, 0, 0, 0.514); }
   .card-total h4 {
     font-size: 50pt !important; }
+
+/* Categoria */
+.area-categoria {
+  border: 1px solid red !important;
+  text-align: center; }
+  .area-categoria a {
+    text-decoration: none;
+    color: black; }
+  .area-categoria .card-categoria {
+    width: 400px !important;
+    height: 100px !important;
+    padding: 0px;
+    border: 1px solid green;
+    padding: 20px; }
