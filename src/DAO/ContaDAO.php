@@ -9,6 +9,36 @@ use GenericMvc\Models\Conta;
 
 class ContaDAO{
 
+
+    public function salvar(Conta $conta){
+        $con = new Database();
+
+        $query = "insert into conta (usuario, nome, descricao,saldo) values (:user, :nome, :descricao, :saldo)";
+        $stmt = $con->prepare($query);
+        
+        $user = $conta->__get('usuario')->__get('idusuario');
+        $nome = $conta->__get('nome');
+        $descricao = $conta->__get('descricao');
+        $saldo = $conta->__get('saldo');
+
+        
+
+        $stmt->bindParam(':user', $user);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':descricao', $descricao);
+        $stmt->bindParam(':saldo', $saldo);
+        
+        $result = $stmt->execute();
+
+        if (!$result){
+            var_dump( $stmt->errorInfo() );
+            exit;
+        }
+        
+        return $result;
+        
+    }
+
     public function listarPorUsuario($idusuario){
        
         $con = new Database();

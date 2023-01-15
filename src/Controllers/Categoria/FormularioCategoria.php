@@ -10,7 +10,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-
 class FormularioCategoria implements RequestHandlerInterface{
    
     use RenderizadorDeHtmlTrait;
@@ -19,6 +18,9 @@ class FormularioCategoria implements RequestHandlerInterface{
         
         $listarTipos = new ListarTipos();
         $tipos = $listarTipos->listarTodos();
+
+        $listarIcons = new ListarIcones();
+        $icones = 
         
         
         $html = $this->renderizaHtml('categoria/formulario.php',[

@@ -48,30 +48,33 @@ class CadastroConta implements RequestHandlerInterface{
 
         
         $user = new Usuario();
+        $usuario = $_SESSION['user'];
         
-        $respositoUser = $this->entityManager->getRepository(Usuario::class);
-        $userC = $respositoUser->find(["idusuario" => 1]);
+        //$respositoUser = $this->entityManager->getRepository(Usuario::class);
+        //$userC = $respositoUser->find(["idusuario" => 1]);
     
         $conta = new Conta();
 
         $conta->__set('saldo', $saldo);
-        $conta->__set('usuario', $userC);
+        $conta->__set('usuario', $usuario);
         $conta->__set('nome', $nome);
         $conta->__set('descricao', $descricao);
        
+        $contaDAO = new ContaDAO();
 
         $tipo = 'success';
-       if (!is_null($id) && $id !== false) {
-            $conta->__set('idconta',$id);
-            $this->entityManager->merge($conta);
-            $this->defineMensagem($tipo, 'Conta atualizada com sucesso');
+        if (!is_null($id) && $id !== false) {
+                $conta->__set('idconta',$id);
+                $this->entityManager->merge($conta);
+                $this->defineMensagem($tipo, 'Conta atualizada com sucesso');
         } else {
-            
-            $this->entityManager->persist($conta);
-            $this->defineMensagem($tipo, 'Conta criada com sucesso');
+                
+                //$this->entityManager->persist($conta);
+                $contaDAO->salvar($conta);
+                //$this->defineMensagem($tipo, 'Conta criada com sucesso');
         }
 
-        $this->entityManager->flush();
+        //$this->entityManager->flush();
 
         return new Response(302, ['Location' => '/']);
 

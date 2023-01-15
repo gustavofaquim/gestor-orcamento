@@ -102,9 +102,10 @@ class CadastroTransacao implements RequestHandlerInterface {
             $transacaoDAO->salvar($transacao);
             $this->defineMensagem($tipo, 'Inserido com sucesso :> ');
 
+           
 
             // Quando cadastrar transacao atualizar o saldo da conta
-            $novoSaldo = $conta->atualizarSaldo($transacao->__get('valor'), $transacao->__get('tipo'));
+            $novoSaldo = $conta->atualizarSaldo($transacao->__get('valor'), $transacao->__get('tipo')->__get('idtipo'));
             $contaC = new CadastroConta();
             $conta = $contaC->atualizar($conta, $novoSaldo);
 

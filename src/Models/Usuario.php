@@ -55,25 +55,20 @@ class Usuario{
             
         }
         
-        //var_dump($this->transacoes);
-        //exit();
-        
-        foreach($this->transacoes as $transacao){
-           //var_dump($transacao->__get('tipo'));
-            if($transacao->__get('tipo')->__get('idtipo') == 1){
+        /*foreach($this->transacoes as $transacao){
+            //var_dump($transacao->__get('tipo'));
+             if($transacao->__get('tipo')->__get('idtipo') == 1){
+                  //echo "<br>";
+                 //var_dump($transacao->__get('idtransacao'));
+                 //var_dump($transacao->__get('comentario'));
+                 //var_dump($transacao->__get('valor'));
+                 $total += $transacao->__get('valor');
                  //echo "<br>";
-                //var_dump($transacao->__get('idtransacao'));
-                //var_dump($transacao->__get('comentario'));
-                //var_dump($transacao->__get('valor'));
-                $total += $transacao->__get('valor');
-                //echo "<br>";
-                //var_dump($total);
-            }
-           
-        }
-        //var_dump($saldo);
-        //var_dump($total);
-        //var_dump($saldo);
+                 //var_dump($total);
+             }
+            
+         } */
+      
         $saldo = $saldo - $total;
        
         return $saldo;

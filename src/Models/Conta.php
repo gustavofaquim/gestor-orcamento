@@ -32,6 +32,7 @@ use GenericMvc\Models\Usuario;
             $this->saldo = $this->saldo - $valor;
         }else if($tipo == 2){
             $this->saldo = $this->saldo + $valor;
+            
         }
         return $this->saldo;
     }
