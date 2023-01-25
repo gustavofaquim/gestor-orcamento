@@ -111,22 +111,8 @@ class ListarTransacoes implements RequestHandlerInterface {
             foreach($trans as $transacao){
                 
                 $ano = (new DateTime($transacao->__get('data')))->format('Y');
-                if($ano == date('Y') ){
-                    
-                    // Realizar agrupamento por categoria
-                    if(in_array($transacao->__get('categoria'), $trans)){
-                        var_dump('Achouuu');
-                        exit();
-                    }
-                    else{
-                        echo "GenericMvc\Controllers\Transacao\ListarTranascoes <pre>;";
-                        var_dump($transacao);
-                        echo "</pre>";
-                        //var_dump(in_array('', $trans));
-                        //exit();
-                    }
-                    $transacoes[] = $transacao;
-                }
+               
+                $transacoes[] = $transacao;
                 
             }
             

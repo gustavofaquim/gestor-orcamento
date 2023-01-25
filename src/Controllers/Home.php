@@ -24,31 +24,40 @@ class Home implements RequestHandlerInterface{
         $array = [];
         //var_dump($aux);
         
-        echo"<pre>";
-        
-        foreach($transacoesM as $trans){
-           //var_dump($trans->__get('categoria')->__get('descricao') . ' - '. $trans->__get('valor'));
-           
-           $categoria = $trans->__get('categoria')->__get('idcateogira');
-           $existe = false;
+        //exit();
+        $transacoesY = $transacaoL->listarTransacoesAno();
 
-            foreach($array as &$subArr){
-                //var_dump($array);
-                if($categoria == $subArr->__get('categoria')->__get('idcategoria')){
-                    var_dump('ETROUUUU');
-                    $valorAntigo = intval($subArr->__get('valor'), 10);
-                    $novoValor = intval($trans->__get('valor'), 10);
-                    $existe = strval($valorAntigo + $novoValor); // inserir o novo numero
-                    $subArr->set('valor',$existe);
+        echo"<pre>";
+
+        $arr = array();
+        foreach($transacoesY as $aux){
+
+            $padrao = $aux->__get('categoria')->__get('idcategoria');
+            $valor = 0;
+
+            foreach($transacoesY as $trans){
+                
+                if($trans->__get('categoria')->__get('idcategoria') == $padrao){
+                    $valor += $trans->__get('valor');
                 }
+
             }
-            if (!$existe) $array[] = $trans;
+            
+            $arr += [$aux->__get('categoria')->__get('descricao'), $valor];
+            $chave = array_search("Lanche", get_object_vars($aux));
+            var_dump($aux);
+
+            var_dump(($chave)); //Agora precismos remover a posição encontrado do array
+            if($chave !== false) unset($transacoesY[$chave]);
 
         }
-        var_dump($array[1]->__get('categoria')->__get('descricao'));
-        echo"</pre>";
+        
         exit();
-        $transacoesY = $transacaoL->listarTransacoesAno();
+        
+        //var_dump($transacoesY[0]->__get('categoria')->__get('descricao'));
+          
+        echo"</pre>";
+
         //$transacoesY = $transacaoL->listarTransacoesPorData('d');
         $transacoes = $transacaoL->listarTransacoes();
 
