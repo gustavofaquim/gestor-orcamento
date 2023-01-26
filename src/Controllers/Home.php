@@ -21,13 +21,10 @@ class Home implements RequestHandlerInterface{
         $transacaoL = new ListarTransacoes();
         $transacoesM = $transacaoL->listarTransacoesMes();
 
-        $array = [];
-        //var_dump($aux);
-        
-        //exit();
+     
         $transacoesY = $transacaoL->listarTransacoesAno();
 
-        echo"<pre>";
+       
 
         $arr = array();
         foreach($transacoesY as $aux){
@@ -43,21 +40,34 @@ class Home implements RequestHandlerInterface{
 
             }
             
-            $arr += [$aux->__get('categoria')->__get('descricao'), $valor];
-            $chave = array_search("Lanche", get_object_vars($aux));
-            var_dump($aux);
-
-            var_dump(($chave)); //Agora precismos remover a posição encontrado do array
-            if($chave !== false) unset($transacoesY[$chave]);
-
+            $arr+=  [
+                "idtransacao" => $aux->__get('idtransacao'),
+                "icon" =>  $aux->__get('categoria')->__get('icon'),
+                "cor" => $aux->__get('categoria')->__get('cor'),
+                "descricao" => $aux->__get('categoria')->__get('descricao'),
+                "valor" => $valor
+            ];
         }
         
-        exit();
-        
-        //var_dump($transacoesY[0]->__get('categoria')->__get('descricao'));
-          
-        echo"</pre>";
+        $arr2 = array();
+        foreach($transacoesY as $trans2){
+            foreach($arr as $ar){
+                if($trans2->__get('categoria')->__get('descricao') != $arr["descricao"]){
+                    $arr2 +=  [
+                        "idtransacao" => $trans2->__get('idtransacao'),
+                        "icon" =>  $trans2->__get('categoria')->__get('icon'),
+                        "cor" => $trans2->__get('categoria')->__get('cor'),
+                        "descricao" => $trans2->__get('categoria')->__get('descricao'),
+                        "valor" => $trans2->__get('valor')
+                    ];
+                }
+            }
+        }
 
+        $transacoesAno[] = $arr;
+        $transacoesAno[] = $arr2;
+        
+          
         //$transacoesY = $transacaoL->listarTransacoesPorData('d');
         $transacoes = $transacaoL->listarTransacoes();
 
@@ -67,7 +77,7 @@ class Home implements RequestHandlerInterface{
         $html = $this->renderizaHtml('inicio.php', [
             'transacoes' => $transacoes,
             'transacoesM' => $transacoesM,
-            'transacoesY' => $transacoesY,
+            'transacoesY' => $transacoesAno,
         ]);
 
         return new Response(200, [], $html);

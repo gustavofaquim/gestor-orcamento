@@ -95,7 +95,7 @@
                       <?php    
                               
                           echo "<div class='accordion-body'>";
-                            echo"<a href='atualiza-transacao?id=".$trans->__get('idtransacao')."'> <div class='ln-descricao'><i class='".$trans->__get('categoria')->__get('icon')."' style='background-color:".$trans->__get('categoria')->__get('cor')."'></i> <span class='categoria'>".$trans->__get('categoria')->__get('descricao'). "</span> <span class='valor'> R$".$trans->__get('valor')."</span></div></a>";
+                            echo"<a href='atualiza-transacao?id=".$trans['idtransacao']."'> <div class='ln-descricao'><i class='".$trans['icon']."' style='background-color:".$trans['cor']."'></i> <span class='categoria'>".$trans['descricao']. "</span> <span class='valor'> R$".$trans['valor']."</span></div></a>";
                           echo"</div>";
                         
                           
